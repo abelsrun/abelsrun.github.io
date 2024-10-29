@@ -1,0 +1,125 @@
+body {
+    margin: 0;
+    padding: 0;
+    overflow: hidden; 
+}
+
+.screenContainer {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    width: 100%;
+    background-color: #013334;
+}
+
+.headerSection {
+    height: 30%;
+    width: 100%;
+    text-align: center;
+    color: white;
+    font-size: 1.5em;
+    font-weight: bold;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.textSection {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    height: 30%;
+    width: 100%;
+    color: white;
+    font-size: 2em;
+    font-family: "Open Sans", serif;
+    font-optical-sizing: auto;
+    font-weight: 300;
+    font-style: normal;
+    font-variation-settings:"wdth" 100;
+    line-height: 1.2;
+    margin-bottom: 20px;
+}
+
+.inline-text {
+    display: inline;
+    white-space: nowrap;
+}
+
+.emailLink {
+    color: white;
+    text-decoration: underline;
+    font-weight: 500;
+}
+
+.socialsSection {
+    display: flex;
+    justify-content: center;
+    align-items: top;
+    height: 20%;
+    width: 100%;
+}
+
+.socialsSection a {
+    color: white; 
+    font-size: 4em; 
+    margin: 0 40px; 
+    text-decoration: none; 
+}
+
+.socialsIcon {
+    width: 50px;
+    margin: 0 10px;
+}
+
+.socialsSection a:visited,
+.socialsSection a:focus,
+.socialsSection a:active {
+    color: white; 
+}
+
+.logoSection {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 20%;
+    width: 100%;
+}
+
+.logoSection img {
+    width: 15%;
+    height: auto;
+    padding-bottom: 40px;
+}
+
+@media (max-width: 1080px) {
+    .textSection {
+        width: 90%;
+        font-size: 3em;
+    }
+
+    .inline-text {
+        white-space: normal; 
+    }
+
+    .socialsSection {
+        width: 90%;
+    }
+    
+    .socialsSection a {
+        font-size: 5em; 
+        margin: 0 40px; 
+        text-decoration: none; 
+    }
+    
+
+    .logoSection img {
+        width: 50%;
+        height: auto;
+        margin-bottom: 50px;
+    }
+}
