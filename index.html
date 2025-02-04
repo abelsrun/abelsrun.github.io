@@ -1,44 +1,414 @@
 <!DOCTYPE html>
-<html>
-  <head>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="styles.css">
+    <link href="fontawesome/css/all.css" rel="stylesheet">
     <title>Abels Run</title>
     <link rel="icon" href="img/Abels-Main.png">
-    <meta name="description" content="Getting our little ones outside again! Abels Run aims to re-engage Tasmanian youth with their natural environment by providing education, support and services they may not have access to.">
-    <meta name="keywords" content="Abels, Tasmania, Non Profit, Non-For Profit, Hobart, Charity, Bushwalking, Education, Schools, Youth">
-    <meta property="og:image" content="img/Abels-Main.jpg" /> 
-    <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;1,300&display=swap" rel="stylesheet">
-  </head>
+    <meta name="description"
+        content="Getting our little ones outside again! Abels Run aims to re-engage Tasmanian youth with their natural environment by providing education, support and services they may not have access to.">
+    <meta name="keywords"
+        content="Abels, Tasmania, Non Profit, Non-For Profit, Hobart, Charity, Bushwalking, Education, Schools, Youth">
+    <meta property="og:image" content="img/Abels-Main.jpg" />
+</head>
 
-<body class="screenContainer">
 
-  <div class="headerSection">
-  </div>
 
-  <div class="textSection">
-    We’re currently building our digital presence — We appreciate your patience.<br><br>
-    In the meantime, you can follow us on socials for future updates,
-    <span class="inline-text">or you can contact us at <a href="mailto:hello@abelsrun.com.au" class="emailLink"><strong>hello@abelsrun.org.au</strong></a></span>
-  </div>
 
-  <div class="socialsSection">
-      <a href="https://www.facebook.com/profile.php?id=61550207640845" target="_blank">
-          <i class="fa-brands fa-facebook"></i>
-      </a>
-      <a href="https://www.instagram.com/abelsrun/" target="_blank">
-          <i class="fa-brands fa-instagram"></i>
-      </a>
-      <a href="https://www.linkedin.com/company/abels-run/" target="_blank">
-          <i class="fa-brands fa-linkedin"></i>
-      </a>
-  </div>
+<body>
+    <div class="page-wrapper">
+        <!-- Landing container -->
+        <div class="landing" id="landing">
+            <img src="img/logo.png" alt="Logo" class="logo" id="logo">
+            <div class="arrow" id="arrow">
+                <i class="fa-solid fa-circle-arrow-down fa-bounce"></i>
+            </div>
+            <!-- Bottom content wrapper -->
+            <div class="bottom-content">
+                <h1 class="bottom-heading">Helping Tasmanian Youth, one <span class="highlight">Abel</span> at a time.
+                </h1>
+                <p class="bottom-p">For Tasmanian's. By Tasmanian's.</p>
+            </div>
+            <nav class="nav-menu" id="navMenu">
+                <a href="#about">About <span class="highlight">Us</span></a>
+                <a href="#workshops"><span class="highlight">Our</span> Workshops</a>
+                <a href="#sponsors">Our <span class="highlight">Sponsors</span></a>
+                <a href="#store"><span class="highlight">Shop</span></a>
+                <a href="#footer">Contact <span class="highlight">Us</span></a>
+                <a href="https://square.link/u/orSLQgmo" target="_blank"><span class="highlight">Donate</span></a>
 
-  <div class="logoSection">
-    <img src="img/Abels-Transparent-Main.png" alt="Abels Run" class="logo">
-  </div>
-  
+            </nav>
+        </div>
+
+        <!-- About Section -->
+        <section class="section" id="about">
+            <div class="section-content">
+                <div class="section-image">
+                    <img src="img/About.png" alt="Section Image">
+                </div>
+                <div class="section-text">
+                    <h1>Tasmania, Our <span class="highlight">Home</span></h1>
+                    <p>At Abels Run, we are passionate about reconnecting Tasmanian youth with the outdoors. Inspired by
+                        the breathtaking beauty of Tasmania, our mission is to create opportunities for young people to
+                        explore, learn, and thrive in the natural environment. Through education, support, and
+                        meaningful services, we aim to foster a love for nature and a commitment to its preservation.
+                        Find out more about our story and our mission below.
+                    </p>
+                    <button class="button popup-button" data-modal-id="modal-content-about">
+                        About Us<i class="fa-solid fa-arrow-right"></i>
+                    </button>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- Workshops Section -->
+        <section class="section reverse" id="workshops">
+            <div class="section-content">
+                <div class="section-image">
+                    <img src="img/workshops.png" alt="Section Image">
+                </div>
+                <div class="section-text">
+                    <h1>Tasmania, Our <span class="highlight">Playground</span></h1>
+                    <p>Our educational workshops are designed to re-engage youth in learning about Tasmania’s unique
+                        animals, geography, and cultural heritage. These workshops will be offered to schools, learning
+                        clubs, and after-school programs. Rather than traditional direct instruction learning, our
+                        approach emphasizes inquiry based hands-on learning with a focus on enjoyable and rewarding
+                        experiences.</p>
+                    <button class="button popup-button" data-modal-id="modal-content-workshops">
+                        Learn More <i class="fa-solid fa-arrow-right"></i>
+                    </button>
+                </div>
+            </div>
+        </section>
+
+
+
+        <!-- Sponsors Section -->
+        <section class="sponsors" id="sponsors">
+            <!-- Top half: sponsor icons and a "see more" button -->
+            <div class="sponsors-top">
+                <h1>A huge <span class="highlight">thank you</span> to all of our sponsors</h1>
+                <div class="sponsor-image">
+                    <img id="sponsor-slide" src="img/type-logo.jpg" alt="Sponsors">
+                </div>
+
+                <div class="sponsor-icons">
+                    <img src="img/type-logo.jpg" alt="TypeDesigns">
+                    <img src="img/tcf-logo.svg" alt="Tasmanian Community Fund">
+                    <img src="img/signnation-logo.png" alt="Sign Nation">
+                </div>
+
+                <button class="button popup-button" data-modal-id="modal-content-sponsors">
+                    Can you lend a hand><i class="fa-solid fa-arrow-right"></i>
+                </button>
+            </div>
+
+            <!-- Bottom half: background with overlay content -->
+            <div class="sponsors-bottom">
+                <div class="sponsors-bottom-content">
+                    <h1>Together, we've raised $12,055</h1>
+                    <p>As of 4th of Feburary 2025</p>
+                    <a href="https://square.link/u/orSLQgmo" target="_blank" class="button">Looking to Contribute? <i
+                            class="fa-solid fa-arrow-right"></i></a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Store Section -->
+        <section class="section" id="store">
+            <div class="section-content">
+                <div class="store-image">
+                    <img id="merch-slide" src="img/Crew.png" alt="Merchandise and support">
+                </div>
+                <div class="section-text">
+                    <h1>Feel & Look <span class="highlight">Good</span></h1>
+                    <p>Check out our exclusive merchandise and support our cause. Every purchase helps us re-engage
+                        Tasmanian youth with their natural environment.</p>
+                    <a href="https://abels-run.square.site/" target="_blank" class="button">Shop Now <i
+                            class="fa-solid fa-arrow-right"></i></a>
+                </div>
+            </div>
+        </section>
+
+        <footer class="footer" id="footer">
+            <!-- Top section: Contact form -->
+            <div class="footer-top">
+                <form class="contact-form" form action="https://formsubmit.co/hello@abelsrun.org.au" method="POST">
+                    <h2>Contact <span class="highlight">Us</span></h2>
+                    <input type="text" name="name" placeholder="Your Name" required>
+                    <input type="email" name="email" placeholder="Your Email" required>
+                    <textarea name="message" placeholder="Your Message" required></textarea>
+                    <button type="submit" class="button">Send Message</button>
+                </form>
+
+                <div class="footer-icons">
+                    <div class="tas">
+                        <img src="img/tas.png" alt="Tasmanian">
+                    </div>
+
+                    <div class="acnc">
+                        <img src="img/ACNC-Registered-Charity-Logo_RGB.png" alt="ACNC">
+                    </div>
+                </div>
+
+
+                <!-- Bottom section: Footer text -->
+                <div class="footer-bottom">
+                    <p>2025 Abels Run. All Rights Reserved. ABN: 292 438 725 25</p>
+                </div>
+        </footer>
+
+        <!-- Modal Popup (initially hidden) -->
+        <div id="popup-modal" class="modal">
+            <div class="modal-content">
+                <span class="modal-close">&times;</span>
+                <div class="modal-body">
+                    <!-- Modal content will be injected here -->
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="script.js"></script>
+
+    <div id="modal-content-about" style="display: none;">
+        <div class="modal-html">
+            <header>
+                <h1>About <span class="highlight">Us</span></h1>
+            </header>
+            <section>
+                <h2>Our <span class="highlight">Mission</span></h2>
+                <h3>"Abel's Run aims to re-engage Tasmanian youth with their natural environment by providing education
+                    and support, collaborating primarily with local companies for Tasmania’s benefit."</h3>
+                <h4>Abel's Run is committed to <span class="highlight">two</span> primary objectives:</h4>
+                <h5><span class="highlight">One.</span> Re-engaging Tasmania’s Youth with Nature.</h5>
+                <p>We aim to reconnect young Tasmanians with their state's natural environment by offering education,
+                    support, and services that may be lacking at home or in school. Reflecting on our own youth, we
+                    observed that many peers had limited knowledge of Tasmania's renowned natural wonders due to
+                    insufficient support in experiencing them.</p>
+                <h5><span class="highlight">Two.</span> Promoting Responsible Digital Literacy.</h5>
+                <p>Given our backgrounds, we recognize the necessity of digital literacy in a rapidly advancing
+                    technological world. As we stand at the dawn of the digital revolution, with its full impact still
+                    unfolding, even senior academics and industry leaders are uncertain about the future of technology.
+                    Yet, young people are expected to navigate this landscape without adequate support.</p>
+                <p>Our overarching purpose is to enrich our communities by focusing on the future—the children of
+                    Tasmania. We plan to achieve this by collaborating primarily with Tasmanian organizations, ensuring
+                    this initiative is created by the people of Tasmania for the benefit of young Tasmanians. Evidence
+                    indicates that excessive exposure to technology negatively affects our youth. Our aim is to educate
+                    them while gently shifting their focus away from a technology-driven world, reintroducing them to
+                    the healing and calming power of nature—something Tasmania is rich in and that is known to benefit
+                    mental well-being.</p>
+
+                <h2>Our <span class="highlight">History</span></h2>
+                <p>The ideology behind Abels Run began to take shape in late 2021, when our founder initiated a
+                    fundraising
+                    event through Cancer Council's "Do It for Cancer" program. The inspiration for this endeavour
+                    stemmed
+                    from his deep love for Tasmania and its natural beauty, a passion nurtured through his pursuits as a
+                    mountaineer with the ambitious goal of summiting the state’s 158 Abel mountains.</p>
+                <p>However, the driving force behind this mission was an act of love and support for his terminally ill
+                    grandmother, Sheila Jackson, who was battling multiple health conditions, including cancer. Sheila’s
+                    struggle became a source of profound motivation for Noah, pushing him to strive harder to achieve
+                    this
+                    physically demanding goal. Sadly, Sheila passed away in early 2022, but she left Noah with her
+                    wedding
+                    ring, which he carries with him every day as a symbol of her.</p>
+                <p>To date, Abels Run has raised over $7,000 for the Cancer Council, a testament to Noah's dedication
+                    and
+                    the community's support. Looking ahead, Noah plans to complete his remaining Abels in a 3-month
+                    period
+                    during 2025, in an event titled "Abels Run: The Final Push." The objective of this final challenge
+                    is to
+                    raise $15,800 for cancer research in Tasmania, while summiting the estimated 58 remaining
+                    mountains—some
+                    of which will involve expeditions lasting over 8 days.This event is intended to serve as the
+                    launchpad
+                    for his broader program, with the goal of establishing Abels Run as a not-for-profit charity.
+
+
+            </section>
+            <footer>
+                <h2>Meet the <span class="highlight">Team</span></h2>
+                <h4>Noah Etherington <span class="highlight">- Founder</span></h4>
+                <p>Noah is the driving force behind Abel's Run—the walker who initiated this journey and will be running
+                    the workshops. However, he is quick to acknowledge that this endeavor is far from a solo effort.
+                    Growing up with limited access to natural outlets and only discovering their value later in life,
+                    Noah recognizes the critical need for a platform like Abel's Run. With a background in computer
+                    science, he has developed a deep interest in how social media and its content impact society,
+                    particularly the younger generation. His experiences and insights have fueled his passion for
+                    creating a space where youth can reconnect with nature, break away from the digital world, and
+                    rediscover the benefits of the outdoors.</p>
+                <h4>Tyler Hall<span class="highlight"> - Supporting Founder</span></h4>
+                <p>Tyler is the second key figure in Abel's Run, having supported Noah from the very beginning. His
+                    contributions have been invaluable, particularly in the areas of design and motivation. A family man
+                    based in Hobart, Tyler specializes in graphic design and has a strong interest in marketing and
+                    business development. His creative vision and expertise are integral to shaping the brand and
+                    outreach of Abel's Run. Tyler is also driven by a personal ambition to win a Diemen Award, a goal
+                    that aligns with the high standards we set for this project. Together, we are committed to striving
+                    towards this achievement as a testament to the quality and impact of our work.</p>
+
+
+            </footer>
+            <section id="sheila">
+                <h4>This mission is dedicated to <span class="highlight">Sheila Jackson.</span></h4>
+                <h3>Sheila was a loving grandmother, mother, and wife. She will always be remembered.</h3>
+                <img src="img/sheila.jpg" alt="Sheila Jackson">
+            </section>
+
+        </div>
+    </div>
+
+    <div id="modal-content-workshops" style="display: none;">
+        <div class="modal-html">
+            <header>
+                <h2>Our <span class="highlight">Workshops</span></h2>
+            </header>
+            <section>
+
+                <p>For committed organisations, we have secured roughly 21 workshops, with The Smith Family offering an
+                    additional 18 workshop program pending success. We want to reach all areas of Tasmania, focusing on
+                    different learning items pending regional location and age groups.</p>
+                <p>For younger student workshops we aim to focus on Tasmania’s unique animals, geography, and cultural
+                    heritage. Emphasizing hands-on, inquiry-based learning rather than traditional direct instruction.
+                    As we move to secondary offerings, we will gently shift toward digital literacy, as they face the
+                    real threat of device and social media addiction.</p>
+
+                <p>The workshops will be held in schools, learning clubs, and after-school programs. For students that
+                    are interested, Abel's Run will offer bushwalking experiences. These excursions will be fully
+                    supported, providing transportation, documentation, gear, food, and social services. The walks will
+                    vary from day trips to multi-night adventures, all led by experienced and trained staff. Logical
+                    thinking plays a key part in selecting our walks. Senior students will be able to access overnight
+                    bushwalks, whereas primary students will be able to
+                    access day walks and overnight camping. We aim to run multiple of these services during our initial
+                    year.</p>
+                <p>Abel's Run will operate solely within Tasmania, statewide.
+                    Our activities will primarily be conducted in educational settings (schools, learning clubs, and
+                    holiday care programs) and the state's national parks. The project is deeply rooted in Tasmania, and
+                    our focus is to keep it in Tasmania, always.</p>
+
+                </p>
+                <p>Given our backgrounds, we recognize the necessity of digital literacy in a rapidly advancing
+                    technological world. As we stand at the dawn of the digital revolution, with its full impact still
+                    unfolding, even senior academics and industry leaders are uncertain about the future of technology.
+                    Yet, young people are expected to navigate this landscape without adequate support.</p>
+                <p>Our overarching purpose is to enrich our communities by focusing on the future—the children of
+                    Tasmania. We plan to achieve this by collaborating primarily with Tasmanian organizations, ensuring
+                    this initiative is created by the people of Tasmania for the benefit of young Tasmanians. Evidence
+                    indicates that excessive exposure to technology negatively affects our youth. Our aim is to educate
+                    them while gently shifting their focus away from a technology-driven world, reintroducing them to
+                    the healing and calming power of nature—something Tasmania is rich in and that is known to benefit
+                    mental well-being.</p>
+            </section>
+
+            <footer>
+                <h2>Expected <span class="highlight">Outcomes</span></h2>
+                <h4>Increased Engagement with <span class="highlight">Nature.</span></h4>
+                <p>By shifting students away from technology and providing an alternative experience in our natural
+                    environment, our participants are expected to improve mental wellbeing and develop a deeper
+                    appreciation for Tasmania's natural heritage.</p>
+
+                <h4>Educational <span class="highlight">Enrichment.</span></h4>
+                <p>The hands-on learning experiences provided through the workshops will enrich the students' knowledge
+                    of Tasmania’s environment and cultural heritage, fostering a sense of pride and connection to their
+                    home state.</p>
+
+                <h4>Future Technological <span class="highlight">Literacy.</span></h4>
+                <p>We don’t want to be “those guys” that go into classrooms to tell kids to get off their phone.
+                    Instead, we aim to introduce students about the negative habits they might have, the dangers of the
+                    industries they support, and what the future of technology looks like. We hope to send them home
+                    with a new mindset on what they spend their free time on.</p>
+
+                <h4>Future Technological <span class="highlight">Literacy.</span></h4>
+                <p>We don’t want to be “those guys” that go into classrooms to tell kids to get off their phone.
+                    Instead, we aim to introduce students about the negative habits they might have, the dangers of the
+                    industries they support, and what the future of technology looks like. We hope to send them home
+                    with a new mindset on what they spend their free time on.</p>
+
+                <h4>Community <span class="highlight">Building.</span></h4>
+                <p>As our identified problem is one most understand, we hope to strengthen community ties and build a
+                    supportive network for the youth of Tasmania. Collaboration with local businesses and involving the
+                    community in the program, we benefit all involved.</p>
+            </footer>
+        </div>
+    </div>
+
+    <div id="modal-content-sponsors" style="display: none;">
+        <div class="modal-html">
+            <header>
+                <h1>Recognition of <span class="highlight">Support</span></h1>
+            </header>
+            <section>
+                <h4>TypeDesigns - <a href="https://typedesigns.com.au/">Visit Tyler's Website.</a></h4>
+                <p>As a Tasmanian-based graphic design company, TypeDesigns has been instrumental in shaping our brand
+                    identity and outreach. Tyler Hall, the company's founder, has generously contributed his expertise
+                    and creative vision to our cause, helping us establish a strong visual presence that resonates with
+                    our mission. We are grateful for his ongoing support and commitment to our shared goal of
+                    re-engaging Tasmanian youth with nature.</p>
+
+                <h4>Tasmanian Community Fund - <a href="https://www.tascomfund.org/">Visit the TCF Website.</a></h4>
+                <p>The Tasmanian Community Fund was established in 1999 following the sale of the Trust Bank. The Fund
+                    provides grants to not-for-profit organisations and is administered by an independent board. The are
+                    kindly supporting us at Abels Run.</p>
+
+                <h4>Sign Nation - <a href="https://signnation.com.au/">Visit Sign Nation.</a></h4>
+                <p>SignNation have been kind enough to support Abels Run when it comes to advertising, and event needs.
+                    Established in 2005, they have been uncompromising in working with and helping hundreds of
+                    organisations of all sizes feel proud about how they look. Born out of this pure dedication and hard
+                    work, Sign Nation is a passionate full service, multi-disciplined and hands on creative team focused
+                    on inspired graphic design and implementation including extraordinary sign making and installations.
+                </p>
+            </section>
+            <section>
+                <h2>Want to lend a <span class="highlight">hand?</span></h2>
+                <p>We would love to have more Tasmanian businesses on board. As a valued sponsor, your company will be
+                    prominently featured across our platforms:</p>
+
+                <h4>Brand <span class="highlight">visibility</span></h4>
+                <ul>
+                    <li><strong>Website Presence:</strong> Your logo and company name will appear on our homepage and
+                        sponsorship page, with visibility tailored to your level of support. Our website will be linked
+                        to our ACNC profile, providing national exposure beneficial for businesses
+                        of all sizes.</li><br>
+                    <li><strong>Social Media Engagement:</strong> We will highlight your support on our social media
+                        channels through pinned posts or story highlights, corresponding to your sponsorship tier.
+                        Additionally, we're open to sharing your content within reasonable boundaries to further promote
+                        our partnership.</li><br>
+                    <li><strong>Event Promotion:</strong> At our inaugural event, which attracted 120 attendees from
+                        organizations such as the Cancer Council, The Smith Family, Hobart Family Doctors, and various
+                        Tasmanian small businesses, sponsors had the opportunity to showcase their branding. As a
+                        sponsor, you'll receive complimentary event access, including a dedicated table to feature your
+                        brand. We're also receptive to any additional visibility ideas you might have.</li>
+                </ul>
+            </section>
+            <section>
+                <h4>Community <span class="highlight">Engagement</span></h4>
+                <p>We warmly invite your company to engage with our community initiatives:</p>
+                <ul>
+                    <li><strong>Event Participation:</strong> Join us in activities like Relay for Life, where your team
+                        can participate alongside ours, fostering community spirit and collaboration.</li><br>
+                    <li><strong>Youth Programs:</strong> Encourage your staff to volunteer in our Wilderness Adventures
+                        with youth. Abel’s Run will provide necessary gear and support, including funding for
+                        requirements such as the Working with Vulnerable People card.</li><br>
+                    <li><strong>Workshop Contributions:</strong> If your company has ideas or content that align with
+                        our mission, we'd be delighted to incorporate them into our workshops, enriching the experience
+                        for Tasmanian youth.</li>
+                </ul>
+            </section>
+            <section>
+                <h4>Sustainable <span class="highlight">Partnership</span></h4>
+                <p>By supporting us now, your company becomes an integral part of a burgeoning community project driven
+                    by passion and a deep love for Tasmania. Our mission primarily involves operational costs after the
+                    acquisition of essential foundational gear, making it sustainable and low-risk. We are committed to
+                    full transparency regarding the success of our workshops, financial standings, expenditures, and all
+                    other aspects of our operations.</p>
+            </section>
+        </div>
+    </div>
+
+
 </body>
+
 </html>
