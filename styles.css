@@ -1,0 +1,872 @@
+/* ============================================================
+   1. Font Definitions
+   ============================================================ */
+@font-face {
+    font-family: "Paralucent";
+    src: url("./fonts/ParalucentExtraLight.otf");
+}
+
+@font-face {
+    font-family: "OpenSans";
+    src: url("./fonts/OpenSans-VariableFont_wdth,wght.ttf");
+}
+
+@font-face {
+    font-family: "Manier";
+    src: url("./fonts/Manier-ThinItalic.otf");
+}
+
+/* ============================================================
+   2. Root Variables
+   ============================================================ */
+:root {
+    --darkgreen: #063334;
+    --darkgreenglass: rgba(6, 51, 52, 0.9);
+    /* 50% opacity */
+    --lightgreen: #99CA3C;
+    --glass: #ffffffef;
+}
+
+/* ============================================================
+   3. Global Resets & Base Styles
+   ============================================================ */
+/* Global resets for vertical scrolling */
+html,
+body {
+    margin: 0;
+    padding: 0;
+    display: block;
+    height: auto;
+    /* Let the body height grow with content */
+    scroll-behavior: smooth;
+}
+
+/* Body base styling; note: background is removed from body and applied to .landing */
+body {
+    font-family: OpenSans;
+    font-weight: 400;
+    color: #fff;
+    background-image: url("img/about-bg.jpg");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+/* Basic typography */
+h1 {
+    font-family: Paralucent;
+    font-weight: 500;
+}
+
+.highlight {
+    color: var(--lightgreen);
+    font-family: Manier;
+    font-weight: bold;
+}
+
+/* ============================================================
+   4. Custom Button Styles
+   ============================================================ */
+.button {
+    display: inline-block;
+    background: var(--lightgreen);
+    color: var(--darkgreen);
+    padding: 12px 24px;
+    font-size: clamp(0.7rem, 2vw, 1rem);
+    font-family: OpenSans, sans-serif;
+    border: none;
+    border-radius: 25px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+    text-transform: uppercase;
+    text-decoration: none;
+    letter-spacing: 1px;
+    cursor: pointer;
+    transition: background 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.button:hover {
+    background: var(--darkgreen);
+    transform: scale(1.05);
+    box-shadow: 0 6px 10px rgba(0, 0, 0, 0.4);
+    color: #fff;
+}
+
+/* ============================================================
+   5. Landing Container Styles
+   ============================================================ */
+.landing {
+    height: 100vh;
+    /* Full viewport height */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    background-image: url("img/home.png");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+/* ============================================================
+   6. Logo Styles
+   ============================================================ */
+.logo {
+    width: 200px;
+    filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.2));
+    padding-bottom: 0.5rem;
+    opacity: 0.9;
+}
+
+/* ============================================================
+   7. Arrow Styles & Animations
+   ============================================================ */
+.arrow {
+    margin-top: 20px;
+    font-size: 1.5rem;
+    color: #fff;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+}
+
+@keyframes glow {
+
+    0%,
+    100% {
+        text-shadow: 0 0 10px var(--lightgreen);
+    }
+
+    50% {
+        text-shadow: 0 0 20px var(--lightgreen);
+    }
+}
+
+@keyframes bounce {
+
+    0%,
+    100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-3.75px);
+    }
+}
+
+.arrow.active {
+    animation: none;
+}
+
+.arrow:hover {
+    transform: scale(1.1);
+    animation: glow 1.5s ease-in-out infinite;
+}
+
+/* ============================================================
+   8. Navigation Menu Styles
+   ============================================================ */
+.nav-menu {
+    margin-top: 20px;
+    overflow: hidden;
+    max-height: 0;
+    opacity: 0;
+    transition: max-height 0.5s ease, opacity 0.5s ease;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.nav-menu.active {
+    max-height: 500px;
+    opacity: 1;
+}
+
+.nav-menu a {
+    font-family: Paralucent;
+    color: white;
+    font-size: 1.2rem;
+    padding: 10px;
+    border-radius: 5px;
+    transition: background 0.3s;
+}
+
+.nav-menu a:hover {
+    animation: glow 1.5s ease-in-out infinite;
+    transform: scale(1.05);
+}
+
+/* ============================================================
+   9. Bottom Content (Heading & Paragraph) Styles
+   ============================================================ */
+.bottom-content {
+    overflow: hidden;
+    transition:
+        max-height 0.7s cubic-bezier(0.4, 0, 0.2, 1),
+        opacity 0.7s cubic-bezier(0.4, 0, 0.2, 1),
+        padding 0.7s cubic-bezier(0.4, 0, 0.2, 1),
+        margin 0.7s cubic-bezier(0.4, 0, 0.2, 1);
+    max-height: 150px;
+    opacity: 1;
+}
+
+.bottom-content.hidden {
+    max-height: 0;
+    opacity: 0;
+    padding-top: 0;
+    padding-bottom: 0;
+    margin-top: 0;
+    margin-bottom: 0;
+}
+
+.bottom-heading {
+    margin-top: 20px;
+    font-size: clamp(1rem, 3vw, 2.5rem);
+    opacity: 0.9;
+    transition: opacity 0.3s ease;
+    text-align: center;
+}
+
+.bottom-p {
+    font-size: clamp(0.8rem, 1.5vw, 1.5rem);
+    opacity: 0.8;
+    text-align: center;
+    transition: opacity 0.3s ease;
+}
+
+/* Modal container covers entire viewport */
+.modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(5px);
+    display: none;
+    /* Hidden by default */
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+/* Modal content container */
+.modal-content {
+    background: #fff;
+    width: 80%;
+    max-width: 1000px;
+    max-height: 80vh;
+    overflow-y: auto;
+    border-radius: 10px;
+    padding: 20px;
+    position: relative;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    /* Centers child elements horizontally */
+}
+
+
+.modal-content::-webkit-scrollbar {
+    display: none;
+}
+
+.modal-content {
+    -ms-overflow-style: none;
+    /* IE and Edge */
+    scrollbar-width: none;
+    /* Firefox */
+}
+
+
+/* Close button styling */
+.modal-close {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    font-size: 2rem;
+    cursor: pointer;
+    color: #99CA3C;
+}
+
+/* Typography and spacing */
+.modal-body h1,
+.modal-body h2,
+.modal-body h3,
+.modal-body h4,
+.modal-body h5,
+.modal-body h6 {
+    color: var(--darkgreen);
+    margin-top: 0;
+}
+
+.modal-body h1 {
+    font-size: clamp(2rem, 2.5vw, 3rem);
+    font-weight: 700;
+}
+
+.modal-body h2 {
+    font-size: clamp(1.75rem, 2vw, 2.5rem);
+    font-weight: 600;
+}
+
+.modal-body h3 {
+    font-size: clamp(0.875rem, 1vw, 1.125rem);
+    font-weight: 500;
+    font-style: italic;
+}
+
+.modal-body h4 {
+    font-size: clamp(1.25rem, 1.5vw, 1.75rem);
+    font-weight: 500;
+}
+
+.modal-body h5 {
+    font-size: clamp(1rem, 1.25vw, 1.5rem);
+    font-weight: 500;
+}
+
+.modal-body h6 {
+    font-size: clamp(0.875rem, 1vw, 1.25rem);
+    font-weight: 600;
+}
+
+.modal-body p {
+    color: var(--darkgreen);
+    font-size: clamp(0.875rem, 1vw, 1.125rem);
+    line-height: 1.6;
+    margin-bottom: 1rem;
+}
+
+
+.modal-body ul {
+    color: var(--darkgreen);
+}
+
+h4 a {
+    color: var(--lightgreen);
+    /* Blue color */
+    font-family: Manier;
+    text-decoration: none;
+    /* Removes underline */
+    font-weight: bold;
+    /* Makes the text bold */
+}
+
+#sheila {
+    text-align: center;
+}
+
+#sheila h1 {
+    font-size: clamp(1.5rem, 2.5vw, 2rem);
+    font-weight: 700;
+}
+
+#sheila img {
+    display: inline-block;
+    margin-top: 20px;
+    /* Optional: adds space above the image */
+    margin-bottom: 20px;
+    /* Optional: adds space below the image */
+    width: 20vh;
+    /* Adjust the width as needed */
+    height: auto;
+    border: 4px solid #ddd;
+    border-radius: 4px;
+}
+
+
+
+
+
+/* ============================================================
+   10. Section Template & Content
+   ============================================================ */
+.section {
+    height: 100vh;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    box-sizing: border-box;
+    background-color: var(--glass);
+}
+
+
+.section-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+    width: 100%;
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+/* Section image container with custom border effect */
+.section-image {
+    flex: 1;
+    position: relative;
+    --color: var(--lightgreen);
+    --border: 10px;
+    --offset: 30px;
+    --gap: 5px;
+    --_c: var(--color) var(--border), #0000 0 calc(100% - var(--border)), var(--color) 0;
+    --_o: calc(3 * var(--offset));
+    padding: calc(var(--gap) + var(--border)) calc(var(--gap) + var(--border) + var(--offset)) calc(var(--gap) + var(--border) + var(--offset)) calc(var(--gap) + var(--border));
+    background: linear-gradient(var(--_c)) var(--_o) var(--_o),
+        linear-gradient(90deg, var(--_c)) var(--_o) var(--_o);
+    background-size: calc(100% - var(--_o)) calc(100% - var(--_o));
+    background-repeat: no-repeat;
+    filter: grayscale(0.4);
+    transition: 1s;
+    cursor: pointer;
+}
+
+.section-image img {
+    width: 100%;
+    height: auto;
+    border-radius: 10px;
+}
+
+.store-image {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    /* Centers the image horizontally */
+    align-items: center;
+    /* Centers the image vertically */
+    transition: transform 0.3s ease, opacity 0.3s ease;
+    /* Smooth transition */
+}
+
+.store-image img {
+    width: 100%;
+    /* Adjust image size */
+    max-height: 600px;
+    height: auto;
+    border-radius: 10px;
+    /* Rounded corners */
+    transition: opacity 1s ease-in-out;
+}
+
+.section-text {
+    text-align: left;
+    padding: 0 20px;
+}
+
+.section-text p {
+    font-size: clamp(0.9rem, 2vw, 1.5rem);
+    line-height: 1.5;
+    margin-bottom: 20px;
+}
+
+.section h1 {
+    font-size: clamp(2rem, 3vw, 4rem);
+    font-weight: 700;
+    margin-top: 0;
+    margin-bottom: 0;
+}
+
+/* ============================================================
+   11. Snap Scrolling Rules
+   ============================================================ */
+.page-wrapper {
+    overflow-y: auto;
+    height: 100vh;
+    scroll-padding-top: 0;
+}
+
+.landing,
+.section,
+.sponsors,
+footer {
+    scroll-snap-align: start;
+    scroll-snap-stop: always;
+}
+
+/* ============================================================
+   12. Specific Section Styling
+   ============================================================ */
+#about h1,
+#store h1 {
+    color: var(--darkgreen);
+}
+
+#about p,
+#store p {
+    color: var(--darkgreen);
+}
+
+
+#workshops {
+    background: var(--darkgreenglass);
+}
+
+
+#workshops h1 {
+    color: white;
+}
+
+#workshops .section-text {
+    text-align: right;
+}
+
+#workshops .button:hover,
+#sponsors .sponsors-bottom-content .button:hover {
+    background: var(--lightgreen);
+}
+
+/* ============================================================
+   13. Sponsors Section (Always Stacked, 100vh Total)
+   ============================================================ */
+.sponsors {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 100vh;
+}
+
+.sponsors-top {
+    height: 50vh;
+    background: var(--glass);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+}
+
+.sponsor-image {
+    width: 40vw;
+    height: 40vw;
+    max-width: 300px;
+    max-height: 300px;
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    /* Centers content horizontally */
+    align-items: center;
+    /* Centers content vertically */
+    overflow: hidden;
+    /* Prevents overflow if the image doesn't perfectly fit */
+    transition: transform 0.3s ease, opacity 0.3s ease;
+    background-color: transparent;
+    /* A placeholder background color, if needed */
+}
+
+.sponsor-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    /* Fill the container; use "contain" if you want the whole image visible */
+    transition: opacity 1s ease-in-out;
+}
+
+.sponsor-button {
+    margin-top: 20px;
+    padding: 12px 24px;
+    font-size: 1.2rem;
+    border: none;
+    background: var(--lightgreen);
+    color: var(--darkgreen);
+    border-radius: 5px;
+    cursor: pointer;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    transition: background 0.3s ease, transform 0.3s ease;
+}
+
+.sponsor-button:hover {
+    background: var(--lightgreen);
+    color: #fff;
+    transform: scale(1.05);
+}
+
+.sponsors-bottom {
+    height: 50vh;
+    position: relative;
+    background-image: url("img/sponsor.jpg");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+}
+
+.sponsors-bottom-content {
+    text-align: center;
+    padding: 20px;
+    border-radius: 10px;
+}
+
+.sponsors-bottom-content h1 {
+    font-size: clamp(2rem, 3vw, 6rem);
+    font-weight: 700;
+    margin: 0;
+}
+
+.sponsors-top h1 {
+    color: var(--darkgreen);
+    font-size: clamp(1.5rem, 3vw, 4rem);
+    text-align: center;
+    font-weight: 700;
+    margin-top: 0;
+    margin-bottom: 0px
+}
+
+.sponsors-bottom-content p {
+    font-style: italic;
+    font-size: clamp(0.7rem, 1.5vw, 1.5rem);
+}
+
+/* Default (mobile view): Show the sponsor slider, hide sponsor icons */
+.sponsor-image {
+    display: block;
+}
+
+.sponsor-icons {
+    display: none;
+}
+
+/* Footer Container */
+.footer {
+    background: var(--darkgreenglass);
+    color: #fff;
+    padding: 20px;
+    font-family: OpenSans, sans-serif;
+}
+
+/* Footer Top Section (Contact Form) */
+.footer-top {
+    padding: 20px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+/* Contact Form Styling */
+.contact-form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.contact-form h2 {
+    font-family: Paralucent;
+    font-size: clamp(1.5rem, 3vw, 2.5rem);
+    margin-bottom: 10px;
+}
+
+.contact-form input,
+.contact-form textarea {
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    font-size: 1rem;
+    font-family: OpenSans, sans-serif;
+}
+
+.contact-form textarea {
+    resize: vertical;
+    min-height: 100px;
+}
+
+/* Reuse your button style */
+.contact-form button {
+    align-self: center;
+    /* If you already have a button style defined as .button, this will inherit that style */
+}
+
+/* Footer Bottom Section */
+.footer-bottom {
+    text-align: center;
+    font-size: 0.9rem;
+    opacity: 0.8;
+}
+
+.footer-icons {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    padding-bottom: 20px;
+}
+
+.tas {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.tas img {
+    width: 80%;
+}
+
+.acnc {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.acnc img {
+    height: 100px;
+    width: 100px;
+}
+
+
+
+
+/* ============================================================
+   14. Media Queries
+   ============================================================ */
+@media (min-width: 768px) {
+
+    .page-wrapper {
+        scroll-snap-type: y mandatory;
+        scroll-snap-stop: always;
+    }
+
+    .logo {
+        width: 300px;
+        padding-bottom: 1rem;
+    }
+
+    .nav-menu a {
+        font-size: 1.5rem;
+    }
+
+    .section-content {
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        gap: 10px;
+        padding: 50px;
+    }
+
+    .section-text {
+        text-align: right;
+        padding: 0;
+    }
+
+    .section.reverse .section-content {
+        flex-direction: row-reverse;
+    }
+
+    .section.reverse .section-text {
+        text-align: left !important;
+        padding: 0;
+    }
+
+    .section-image img {
+        width: 300px;
+        height: 300px;
+        object-fit: cover;
+    }
+
+    .store-image img {
+        width: 300px;
+        max-height: 300px;
+    }
+
+    .sponsor-image {
+        display: none;
+    }
+
+    .sponsor-icons {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 50px;
+        /* Adjust gap as needed */
+    }
+
+    .sponsor-icons img {
+        max-width: 200px;
+        /* Adjust this value to control image size */
+        height: auto;
+        padding-bottom: 50px;
+    }
+
+    .sponsors-top h1 {
+        margin-bottom: 50px
+    }
+
+    .tas img {
+        width: 50%;
+        padding-left: 20px;
+    }
+
+    .acnc img {
+        height: 200px;
+        width: 200px;
+    }
+
+
+}
+
+@media (min-width: 1024px) {
+    .logo {
+        width: 350px;
+    }
+
+    .arrow {
+        font-size: 2.5rem;
+    }
+
+    .nav-menu a {
+        font-size: 1.7rem;
+        padding: 12px;
+    }
+
+    .section-content {
+        gap: 10px;
+        padding: 50px;
+    }
+
+    .nav-menu {
+        flex-direction: row;
+    }
+
+    .section-image img {
+        width: 400px;
+        height: 600px;
+        object-fit: cover;
+    }
+
+    .section-image.in-view {
+        background-position: 0px 0px;
+        background-size: calc(100% - var(--offset)) calc(100% - var(--offset));
+        filter: grayscale(0);
+    }
+
+    .store-image img {
+        width: 600px;
+        max-height: 600px;
+    }
+
+    .sponsor-image {
+        margin: 2rem;
+    }
+
+    .sponsor-icons {
+        gap: 100px;
+        /* Adjust gap as needed */
+    }
+
+    .tas img {
+        width: 20%;
+    }
+
+    .contact-form {
+        gap: 30px;
+    }
+
+}
