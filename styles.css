@@ -233,40 +233,144 @@ h1 {
     transition: opacity 0.3s ease;
 }
 
-/* Modal container covers entire viewport */
+/* Modal container */
 .modal {
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    background: rgba(0, 0, 0, 0.5);
+    background: var(--darkgreenglass);
+    /* Darker overlay for better focus */
     backdrop-filter: blur(5px);
     display: none;
-    /* Hidden by default */
     justify-content: center;
     align-items: center;
     z-index: 1000;
 }
 
-/* Modal content container */
+/* Modal content box */
 .modal-content {
     background: #fff;
-    width: 80%;
-    max-width: 1000px;
+    width: 85%;
+    max-width: 900px;
     max-height: 80vh;
     overflow-y: auto;
-    border-radius: 10px;
-    padding: 20px;
+    border-radius: 12px;
+    padding: 50px;
     position: relative;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
-    text-align: center;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+    text-align: left;
     display: flex;
     flex-direction: column;
-    align-items: center;
-    /* Centers child elements horizontally */
+    font-family: 'Manier', sans-serif;
 }
 
+/* Close button */
+.modal-close {
+    position: absolute;
+    top: 15px;
+    right: 20px;
+    font-size: 2rem;
+    cursor: pointer;
+    color: var(--lightgreen);
+    transition: color 0.3s ease-in-out;
+}
+
+.modal-close:hover {
+    color: var(--darkgreen);
+}
+
+/* Standardized Headers */
+.modal-html h1 {
+    font-size: 2.5rem;
+    font-weight: bold;
+    color: var(--darkgreen);
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.modal-html h2 {
+    font-size: 2rem;
+    font-weight: bold;
+    color: var(--darkgreen);
+    margin-top: 30px;
+    text-transform: uppercase;
+    position: relative;
+    text-align: center;
+}
+
+/* Underline effect for Section Titles */
+.modal-html h2::after {
+    content: "";
+    display: block;
+    width: 50%;
+    height: 3px;
+    background-color: var(--lightgreen);
+    margin: 10px auto;
+}
+
+/* Subheadings */
+.modal-html h3 {
+    font-size: 1.4rem;
+    font-weight: 500;
+    font-style: italic;
+    color: var(--darkgreen);
+    text-align: center;
+}
+
+.modal-html h4 {
+    font-size: 1.3rem;
+    font-weight: bold;
+    margin-top: 20px;
+    color: var(--darkgreen);
+}
+
+.modal-html a {
+    color: var(--lightgreen);
+    text-decoration: none;
+}
+
+/* Highlighted text */
+.highlight {
+    color: var(--lightgreen);
+}
+
+/* Paragraphs */
+.modal-html p {
+    font-size: 1.1rem;
+    line-height: 1.7;
+    color: var(--darkgreen);
+    margin-bottom: 15px;
+}
+
+/* Centered Image */
+#sheila {
+    text-align: center;
+}
+
+#sheila img {
+    display: block;
+    margin: 20px auto;
+    width: 20vh;
+    border: 4px solid #ddd;
+    border-radius: 8px;
+}
+
+/* Footer Section */
+.modal-html footer {
+    margin-top: 30px;
+    text-align: center;
+}
+
+.modal-html footer h2 {
+    font-size: 1.8rem;
+    font-weight: bold;
+}
+
+.modal-body ul {
+    color: var(--darkgreen);
+}
 
 .modal-content::-webkit-scrollbar {
     display: none;
@@ -278,105 +382,6 @@ h1 {
     scrollbar-width: none;
     /* Firefox */
 }
-
-
-/* Close button styling */
-.modal-close {
-    position: absolute;
-    top: 20px;
-    right: 20px;
-    font-size: 2rem;
-    cursor: pointer;
-    color: #99CA3C;
-}
-
-/* Typography and spacing */
-.modal-body h1,
-.modal-body h2,
-.modal-body h3,
-.modal-body h4,
-.modal-body h5,
-.modal-body h6 {
-    color: var(--darkgreen);
-    margin-top: 0;
-}
-
-.modal-body h1 {
-    font-size: clamp(2rem, 2.5vw, 3rem);
-    font-weight: 700;
-}
-
-.modal-body h2 {
-    font-size: clamp(1.75rem, 2vw, 2.5rem);
-    font-weight: 600;
-}
-
-.modal-body h3 {
-    font-size: clamp(0.875rem, 1vw, 1.125rem);
-    font-weight: 500;
-    font-style: italic;
-}
-
-.modal-body h4 {
-    font-size: clamp(1.25rem, 1.5vw, 1.75rem);
-    font-weight: 500;
-}
-
-.modal-body h5 {
-    font-size: clamp(1rem, 1.25vw, 1.5rem);
-    font-weight: 500;
-}
-
-.modal-body h6 {
-    font-size: clamp(0.875rem, 1vw, 1.25rem);
-    font-weight: 600;
-}
-
-.modal-body p {
-    color: var(--darkgreen);
-    font-size: clamp(0.875rem, 1vw, 1.125rem);
-    line-height: 1.6;
-    margin-bottom: 1rem;
-}
-
-
-.modal-body ul {
-    color: var(--darkgreen);
-}
-
-h4 a {
-    color: var(--lightgreen);
-    /* Blue color */
-    font-family: Manier;
-    text-decoration: none;
-    /* Removes underline */
-    font-weight: bold;
-    /* Makes the text bold */
-}
-
-#sheila {
-    text-align: center;
-}
-
-#sheila h1 {
-    font-size: clamp(1.5rem, 2.5vw, 2rem);
-    font-weight: 700;
-}
-
-#sheila img {
-    display: inline-block;
-    margin-top: 20px;
-    /* Optional: adds space above the image */
-    margin-bottom: 20px;
-    /* Optional: adds space below the image */
-    width: 20vh;
-    /* Adjust the width as needed */
-    height: auto;
-    border: 4px solid #ddd;
-    border-radius: 4px;
-}
-
-
 
 
 
