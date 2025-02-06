@@ -250,7 +250,7 @@ h1 {
     padding-left: 30px;
     position: relative;
     box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
-    text-align: right;
+    text-align: left;
     display: flex;
     flex-direction: column;
     font-family: 'Manier', sans-serif;
@@ -266,7 +266,7 @@ h1 {
     cursor: pointer;
     color: var(--lightgreen);
     transition: color 0.3s ease-in-out;
-    
+    text-align: right;
 }
 
 .modal-close:hover {
@@ -334,7 +334,6 @@ h1 {
     line-height: 1.7;
     color: var(--darkgreen);
     margin-bottom: 15px;
-    text-align: left;
 }
 
 /* Centered Image */

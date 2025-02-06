@@ -1,60 +1,59 @@
-document.addEventListener('DOMContentLoaded', function() {
-  // ============================================================
-  // Navigation Menu & Arrow Toggle
-  // ============================================================
-  const arrow = document.getElementById('arrow');
-  const navMenu = document.getElementById('navMenu');
-  const bottomContent = document.querySelector('.bottom-content');
+const arrow = document.getElementById('arrow');
+const navMenu = document.getElementById('navMenu');
+const bottomContent = document.querySelector('.bottom-content');
 
-  if (arrow && navMenu && bottomContent) {
-    arrow.addEventListener('click', () => {
-      navMenu.classList.toggle('active');
-      arrow.classList.toggle('active');
+arrow.addEventListener('click', () => {
+  // Toggle active classes on nav menu and arrow
+  navMenu.classList.toggle('active');
+  arrow.classList.toggle('active');
 
-      if (arrow.classList.contains('active')) {
-        arrow.innerHTML = '<i class="fa-solid fa-circle-xmark"></i>';
-        bottomContent.classList.add('hidden');
-      } else {
-        arrow.innerHTML = '<i class="fa-solid fa-circle-arrow-down fa-bounce"></i>';
-        bottomContent.classList.remove('hidden');
-      }
-    });
-
-    window.addEventListener('scroll', () => {
-      if (navMenu.classList.contains('active')) {
-        navMenu.classList.remove('active');
-        arrow.classList.remove('active');
-        arrow.innerHTML = '<i class="fa-solid fa-circle-arrow-down fa-bounce"></i>';
-        bottomContent.classList.remove('hidden');
-      }
-    });
-
-    document.querySelectorAll('.nav-menu a').forEach(link => {
-      link.addEventListener('click', function(e) {
-        e.preventDefault();
-        if (navMenu.classList.contains('active')) {
-          navMenu.classList.remove('active');
-          arrow.classList.remove('active');
-          arrow.innerHTML = '<i class="fa-solid fa-circle-arrow-down fa-bounce"></i>';
-          bottomContent.classList.remove('hidden');
-        }
-        const targetId = this.getAttribute('href');
-        const target = document.querySelector(targetId);
-        if (target) {
-          target.scrollIntoView({ behavior: 'smooth' });
-        }
-      });
-    });
+  // Toggle arrow icon between down arrow and cross,
+  // and toggle the hidden class on the bottom-content container
+  if (arrow.classList.contains('active')) {
+    arrow.innerHTML = '<i class="fa-solid fa-circle-xmark"></i>'; // cross symbol
+    bottomContent.classList.add('hidden');
   } else {
-    console.warn('Navigation elements not found!');
+    arrow.innerHTML = '<i class="fa-solid fa-circle-arrow-down fa-bounce"></i>'; // down arrow
+    bottomContent.classList.remove('hidden');
   }
+});
 
-  // ============================================================
-  // Intersection Observer for Section Images
-  // ============================================================
-  const sectionImages = document.querySelectorAll('.section-image');
-  if (sectionImages.length) {
-    const observerOptions = { threshold: 0.5 };
+// New: Close the menu when the user scrolls
+window.addEventListener('scroll', () => {
+  if (navMenu.classList.contains('active')) {
+    navMenu.classList.remove('active');
+    arrow.classList.remove('active');
+    arrow.innerHTML = '<i class="fa-solid fa-circle-arrow-down fa-bounce"></i>';
+    bottomContent.classList.remove('hidden');
+  }
+});
+
+// New: Also close the menu when a nav link is clicked
+document.querySelectorAll('.nav-menu a').forEach(link => {
+  link.addEventListener('click', function(e) {
+    e.preventDefault();
+    // Close the menu if it is open
+    if (navMenu.classList.contains('active')) {
+      navMenu.classList.remove('active');
+      arrow.classList.remove('active');
+      arrow.innerHTML = '<i class="fa-solid fa-circle-arrow-down fa-bounce"></i>';
+      bottomContent.classList.remove('hidden');
+    }
+    // Smoothly scroll to the target section
+    const targetId = this.getAttribute('href');
+    const target = document.querySelector(targetId);
+    if (target) {
+      target.scrollIntoView({ behavior: 'smooth' });
+    }
+  });
+
+  document.addEventListener("DOMContentLoaded", () => {
+    const sectionImages = document.querySelectorAll('.section-image');
+  
+    const observerOptions = {
+      threshold: 0.5 // triggers when 50% of the element is visible
+    };
+  
     const observer = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
         if (entry.isIntersecting) {
@@ -64,150 +63,99 @@ document.addEventListener('DOMContentLoaded', function() {
         }
       });
     }, observerOptions);
-    sectionImages.forEach(img => observer.observe(img));
-  }
+  
+    sectionImages.forEach(img => {
+      observer.observe(img);
+    });
+  });
+});
 
-  // ============================================================
-  // Merch Slide Show
-  // ============================================================
-  const merchSlides = [
-    "img/Crew.png",
-    "img/Tee-Bone.png",
-    "img/Tee-Pine Green.png",
-    "img/Tee-Natural.png"
-  ];
-  let currentMerchIndex = 0;
-  const merchSlide = document.getElementById("merch-slide");
-  if (merchSlide) {
-    function showNextMerchSlide() {
-      currentMerchIndex = (currentMerchIndex + 1) % merchSlides.length;
-      merchSlide.style.opacity = "0";
-      setTimeout(() => {
-        merchSlide.src = merchSlides[currentMerchIndex];
-        merchSlide.style.opacity = "1";
-      }, 1000);
+document.addEventListener("DOMContentLoaded", () => {
+    const slides = [
+        "img/Crew.png",        // First image
+        "img/Tee-Bone.png",      // Second image
+        "img/Tee-Pine Green.png",      // Third image
+        "img/Tee-Natural.png"      // Add more images as needed
+    ];
+
+    let currentIndex = 0;
+    const merchSlide = document.getElementById("merch-slide");
+
+    function showNextSlide() {
+        currentIndex = (currentIndex + 1) % slides.length; // Loop back to the start
+        merchSlide.style.opacity = "0"; // Fade out
+        setTimeout(() => {
+            merchSlide.src = slides[currentIndex]; // Change image
+            merchSlide.style.opacity = "1"; // Fade in
+        }, 1000); // Match the duration of the CSS transition
     }
-    setInterval(showNextMerchSlide, 5000);
-  }
 
-  // ============================================================
-  // Sponsor Slide Show
-  // ============================================================
-  const sponsorSlides = [
-    "img/type-logo.jpg",
-    "img/tcf-logo.svg",
-    "img/signnation-logo.png"
-  ];
-  let currentSponsorIndex = 0;
-  const sponsorSlide = document.getElementById("sponsor-slide");
-  if (sponsorSlide) {
-    function showNextSponsorSlide() {
-      currentSponsorIndex = (currentSponsorIndex + 1) % sponsorSlides.length;
-      sponsorSlide.style.opacity = "0";
-      setTimeout(() => {
-        sponsorSlide.src = sponsorSlides[currentSponsorIndex];
-        sponsorSlide.style.opacity = "1";
-      }, 1000);
+    setInterval(showNextSlide, 5000); // Change every 5 seconds
+});
+
+document.addEventListener("DOMContentLoaded", () => {
+    const slides = [
+        "img/type-logo.jpg",        // First image
+        "img/tcf-logo.svg",      // Second image
+        "img/signnation-logo.png"      // Add more images as needed
+    ];
+
+    let currentIndex = 0;
+    const merchSlide = document.getElementById("sponsor-slide");
+
+    function showNextSlide() {
+        currentIndex = (currentIndex + 1) % slides.length; // Loop back to the start
+        merchSlide.style.opacity = "0"; // Fade out
+        setTimeout(() => {
+            merchSlide.src = slides[currentIndex]; // Change image
+            merchSlide.style.opacity = "1"; // Fade in
+        }, 1000); // Match the duration of the CSS transition
     }
-    setInterval(showNextSponsorSlide, 5000);
-  }
 
-  // ============================================================
-  // Modal Popup Handling
-  // ============================================================
+    setInterval(showNextSlide, 5000); // Change every 5 seconds
+});
+
+document.addEventListener("DOMContentLoaded", () => {
   const modal = document.getElementById("popup-modal");
-  if (modal) {
-    const modalBody = modal.querySelector(".modal-body");
-    const modalClose = modal.querySelector(".modal-close");
-    const scrollToTopButton = document.getElementById('scrollToTop');
+  const modalBody = modal.querySelector(".modal-body");
+  const modalClose = modal.querySelector(".modal-close");
 
-    document.querySelectorAll(".popup-button").forEach(button => {
-      button.addEventListener("click", (e) => {
-        e.preventDefault();
-        const modalContentId = button.getAttribute("data-modal-id");
-        const hiddenContent = document.getElementById(modalContentId);
-        if (hiddenContent && modalBody) {
-          modal.style.display = "flex";
-          modalBody.innerHTML = "";
-          void modalBody.offsetHeight;
-          scrollToTopButton.classList.remove('show');
-          setTimeout(() => {
-            modalBody.innerHTML = hiddenContent.innerHTML;
-            modalBody.scrollTop = 0;
-            scrollToTopButton.classList.remove('show');
+  // Attach click handler to all popup buttons
+  document.querySelectorAll(".popup-button").forEach(button => {
+    button.addEventListener("click", (e) => {
+      e.preventDefault();
 
-          }, 10);
-        }
-      });
-    });
+      // Get the ID of the hidden content container from the data attribute
+      const modalContentId = button.getAttribute("data-modal-id");
+      const hiddenContent = document.getElementById(modalContentId);
 
-    if (modalClose && modalBody) {
-      modalClose.addEventListener("click", () => {
-        modal.style.display = "none";
+      if (hiddenContent) {
+        modal.style.display = "flex";  // Open modal
+
+        // Reset modal content (force reflow)
         modalBody.innerHTML = "";
-      });
-    }
+        void modalBody.offsetHeight; // Trigger reflow
 
-    window.addEventListener("click", (e) => {
-      if (e.target === modal) {
-        modal.style.display = "none";
-        if (modalBody) modalBody.innerHTML = "";
+        // Inject new content after reflow
+        setTimeout(() => {
+          modalBody.innerHTML = hiddenContent.innerHTML;
+          modalBody.scrollTop = 0; // Now reset scroll position
+        }, 10);
       }
     });
-  }
+  });
 
-  // ============================================================
-  // Scroll-to-Top Button
-  // ============================================================
-  const scrollToTopButton = document.getElementById('scrollToTop');
-  if (scrollToTopButton) {
-    
-    console.log('scrollToTopButton found:', scrollToTopButton);
-  
-    // Determine the scroll container:
-    // Change '.main-content' to your custom scroll container selector if you have one.
-    // If no custom container is found, use the window.
-    const scrollContainer = document.querySelector('.page-wrapper') || window;
-  
-    function toggleScrollButton() {
-      let scrollPos;
-      if (scrollContainer === window) {
-        scrollPos = window.pageYOffset;
-      } else {
-        scrollPos = scrollContainer.scrollTop;
-      }
-      if (scrollPos > 100) {
-        scrollToTopButton.classList.add('show');
-      } else {
-        scrollToTopButton.classList.remove('show');
-      }
+  // Close modal when the close button is clicked
+  modalClose.addEventListener("click", () => {
+    modal.style.display = "none";
+    modalBody.innerHTML = ""; // Clear content to ensure fresh reload
+  });
+
+  // Optional: Close modal if the user clicks outside of the modal content
+  window.addEventListener("click", (e) => {
+    if (e.target === modal) {
+      modal.style.display = "none";
+      modalBody.innerHTML = ""; // Reset content when closing
     }
-  
-    // Attach the scroll event listener to the appropriate container.
-    if (scrollContainer === window) {
-      window.addEventListener('scroll', toggleScrollButton);
-    } else {
-      scrollContainer.addEventListener('scroll', toggleScrollButton);
-    }
-  
-    scrollToTopButton.addEventListener('click', function() {
-      if (scrollContainer === window) {
-        window.scrollTo({
-          top: 0,
-          behavior: 'smooth'
-        });
-      } else {
-        // If using a custom scroll container, scroll that container to the top.
-        scrollContainer.scrollTo({
-          top: 0,
-          behavior: 'smooth'
-        });
-      }
-      setTimeout(() => {
-        scrollToTopButton.classList.remove('show');
-      }, 500);
-    });
-  } else {
-    console.warn('scrollToTopButton not found in the DOM.');
-  }  
+  });
 });
