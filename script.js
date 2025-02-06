@@ -125,13 +125,23 @@ document.addEventListener("DOMContentLoaded", () => {
   document.querySelectorAll(".popup-button").forEach(button => {
     button.addEventListener("click", (e) => {
       e.preventDefault();
+
       // Get the ID of the hidden content container from the data attribute
       const modalContentId = button.getAttribute("data-modal-id");
       const hiddenContent = document.getElementById(modalContentId);
+
       if (hiddenContent) {
-        // Retrieve the inner HTML and inject it into the modal
-        modalBody.innerHTML = hiddenContent.innerHTML;
-        modal.style.display = "flex";
+        modal.style.display = "flex";  // Open modal
+
+        // Reset modal content (force reflow)
+        modalBody.innerHTML = "";
+        void modalBody.offsetHeight; // Trigger reflow
+
+        // Inject new content after reflow
+        setTimeout(() => {
+          modalBody.innerHTML = hiddenContent.innerHTML;
+          modalBody.scrollTop = 0; // Now reset scroll position
+        }, 10);
       }
     });
   });
@@ -139,15 +149,18 @@ document.addEventListener("DOMContentLoaded", () => {
   // Close modal when the close button is clicked
   modalClose.addEventListener("click", () => {
     modal.style.display = "none";
+    modalBody.innerHTML = ""; // Clear content to ensure fresh reload
   });
 
   // Optional: Close modal if the user clicks outside of the modal content
   window.addEventListener("click", (e) => {
     if (e.target === modal) {
       modal.style.display = "none";
+      modalBody.innerHTML = ""; // Reset content when closing
     }
   });
 });
+
 
 
 
