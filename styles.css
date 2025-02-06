@@ -252,8 +252,8 @@ h1 {
 /* Modal content box */
 .modal-content {
     background: #fff;
-    width: 85%;
-    max-width: 900px;
+    margin: 1rem;
+    max-width: 1000px;
     max-height: 80vh;
     overflow-y: auto;
     border-radius: 12px;
