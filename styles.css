@@ -79,6 +79,7 @@ h1 {
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
     text-transform: uppercase;
     text-decoration: none;
+    font-weight: bold;
     letter-spacing: 1px;
     cursor: pointer;
     transition: background 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
@@ -138,18 +139,6 @@ h1 {
 
     50% {
         text-shadow: 0 0 20px var(--lightgreen);
-    }
-}
-
-@keyframes bounce {
-
-    0%,
-    100% {
-        transform: translateY(0);
-    }
-
-    50% {
-        transform: translateY(-3.75px);
     }
 }
 
@@ -251,13 +240,14 @@ h1 {
 
 /* Modal content box */
 .modal-content {
-    background: #fff;
+    background: var(--glass);
     margin: 1rem;
     max-width: 1000px;
     max-height: 70vh;
     overflow-y: auto;
     border-radius: 12px;
-    padding: 50px;
+    padding-right: 30px;
+    padding-left: 30px;
     position: relative;
     box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
     text-align: left;
@@ -268,13 +258,15 @@ h1 {
 
 /* Close button */
 .modal-close {
-    position: absolute;
-    top: 15px;
+    position: sticky;
+    display: inline-block;
+    top: 20px;
     right: 20px;
-    font-size: 2rem;
+    font-size: 1.8rem;
     cursor: pointer;
     color: var(--lightgreen);
     transition: color 0.3s ease-in-out;
+    text-align: right;
 }
 
 .modal-close:hover {
@@ -432,8 +424,8 @@ h1 {
 
 .section-image img {
     width: 100%;
-    height: auto;
-    border-radius: 10px;
+    height: 100%;
+
 }
 
 .store-image {
@@ -520,7 +512,8 @@ footer {
 }
 
 #workshops .button:hover,
-#sponsors .sponsors-bottom-content .button:hover {
+#sponsors .sponsors-bottom-content .button:hover, 
+footer .button:hover {
     background: var(--lightgreen);
 }
 
@@ -650,7 +643,7 @@ footer {
 .footer-top {
     padding: 20px;
     border-bottom: 1px solid rgba(255, 255, 255, 0.3);
-    margin-bottom: 20px;
+    margin-bottom: 3rem;
     text-align: center;
 }
 
@@ -726,8 +719,29 @@ footer {
     width: 100px;
 }
 
-
-
+.scroll-to-top {
+    position: fixed; /* Fixed to viewport */
+    left: 50%;
+    bottom: 10vh; /* Adjust as needed */
+    transform: translateX(-50%); /* Center horizontally */
+    background-color: transparent;
+    border-radius: 50%;
+    color: var(--darkgreen);
+    border: none;
+    padding: 10px 10px;
+    font-size: 2rem;
+    cursor: pointer;
+    z-index: 9999;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease-in-out, visibility 0.3s;
+  }
+  
+  .scroll-to-top.show {
+    opacity: 1;
+    visibility: visible;
+  }
+  
 
 /* ============================================================
    14. Media Queries
@@ -872,6 +886,10 @@ footer {
 
     .contact-form {
         gap: 30px;
+    }
+
+    .scroll-to-top{
+        display: none;
     }
 
 }

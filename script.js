@@ -1,4 +1,3 @@
-// Existing code:
 const arrow = document.getElementById('arrow');
 const navMenu = document.getElementById('navMenu');
 const bottomContent = document.querySelector('.bottom-content');
@@ -160,7 +159,3 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   });
 });
-
-
-
-
