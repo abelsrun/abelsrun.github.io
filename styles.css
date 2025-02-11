@@ -1,7 +1,7 @@
 /* ============================================================
    1. Font Definitions
    ============================================================ */
-   @font-face {
+@font-face {
     font-family: "Paralucent";
     src: url("./fonts/ParalucentExtraLight.otf");
 }
@@ -22,7 +22,7 @@
 :root {
     --darkgreen: #063334;
     --darkgreenglass: rgba(6, 51, 52, 0.9);
-    /* 50% opacity */
+    --lightgreenglass: rgba(153, 202, 60, 0.5);
     --lightgreen: #99CA3C;
     --glass: #ffffffef;
 }
@@ -75,30 +75,46 @@ h1 {
     padding: 12px 24px;
     font-size: clamp(0.7rem, 2vw, 1rem);
     font-family: OpenSans, sans-serif;
-    border: none;
-    border-radius: 25px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
-    text-transform: uppercase;
+    border: 2px solid transparent;
+    border-radius: 6px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    text-transform: none;
     text-decoration: none;
-    font-weight: bold;
-    letter-spacing: 1px;
+    font-weight: 600;
+    letter-spacing: 0.5px;
     cursor: pointer;
-    transition: background 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+    transition: background 0.3s ease,
+        transform 0.3s ease,
+        box-shadow 0.3s ease,
+        border-color 0.3s ease;
 }
 
 .button:hover {
     background: var(--darkgreen);
-    transform: scale(1.05);
-    box-shadow: 0 6px 10px rgba(0, 0, 0, 0.4);
+    border-color: var(--lightgreen);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
     color: #fff;
 }
+
+/* Fade-in effect for buttons on scroll */
+.button.fade-button {
+    opacity: 0;
+    transition: opacity 0.8s ease-out;
+}
+
+.button.fade-button.fade-in {
+    opacity: 1;
+}
+
 
 /* ============================================================
    5. Landing Container & Logo Styles
    ============================================================ */
 .landing {
+    position: relative;
+    /* Needed for pseudo-element positioning */
     height: 100vh;
-    /* Full viewport height */
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -108,13 +124,34 @@ h1 {
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
+    background-attachment: fixed;
 }
 
+.landing::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(6, 51, 52, 0.4);
+    /* A semi-transparent dark overlay */
+    z-index: 1;
+}
+
+.landing>* {
+    position: relative;
+    z-index: 2;
+    /* Ensure content appears above the overlay */
+}
+
+
 .logo {
-    width: 200px;
+    width: 250px;
+    /* Increased size */
     filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.2));
     padding-bottom: 0.5rem;
-    opacity: 0.9;
+    opacity: 0.95;
 }
 
 /* ============================================================
@@ -129,10 +166,12 @@ h1 {
 }
 
 @keyframes glow {
+
     0%,
     100% {
         text-shadow: 0 0 10px var(--lightgreen);
     }
+
     50% {
         text-shadow: 0 0 20px var(--lightgreen);
     }
@@ -164,22 +203,28 @@ h1 {
 .nav-menu.active {
     max-height: 500px;
     opacity: 1;
+    background: rgba(255, 255, 255, 0.1);
+    /* Very light overlay for the nav */
+    padding: 10px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
 .nav-menu a {
     font-family: Paralucent;
-    color: white;
+    color: #fff;
     font-size: 1.2rem;
-    padding: 10px;
+    padding: 10px 15px;
     border-radius: 5px;
     transition: background 0.3s;
     text-decoration: none;
 }
 
 .nav-menu a:hover {
-    animation: glow 1.5s ease-in-out infinite;
+    background: var(--lightgreenglass);
     transform: scale(1.05);
 }
+
 
 /* ============================================================
    8. Bottom Content (Heading & Paragraph) Styles
@@ -191,7 +236,7 @@ h1 {
         opacity 0.7s cubic-bezier(0.4, 0, 0.2, 1),
         padding 0.7s cubic-bezier(0.4, 0, 0.2, 1),
         margin 0.7s cubic-bezier(0.4, 0, 0.2, 1);
-    max-height: 200px;
+    max-height: 220px;
     opacity: 1;
 }
 
@@ -206,17 +251,19 @@ h1 {
 
 .bottom-heading {
     margin-top: 20px;
-    font-size: clamp(1rem, 3vw, 2.5rem);
-    opacity: 0.9;
+    font-size: clamp(1.2rem, 3vw, 3rem);
+    color: #fff;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
     transition: opacity 0.3s ease;
     text-align: center;
 }
 
 .bottom-p {
-    font-size: clamp(0.8rem, 1.5vw, 1.5rem);
-    opacity: 0.8;
-    text-align: center;
+    font-size: clamp(1rem, 2vw, 1.5rem);
+    color: #fff;
+    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.5);
     transition: opacity 0.3s ease;
+    text-align: center;
 }
 
 /* ============================================================
@@ -246,33 +293,33 @@ h1 {
     max-width: 1000px;
     max-height: 70vh;
     overflow-y: auto;
-    border-radius: 16px;   /* Increased border-radius for softer corners */
-    padding: 2rem;         /* More padding for spacious content */
-    position: relative;
+    border-radius: 16px;
+    /* Increased border-radius for softer corners */
+    padding: 2rem;
+    /* More padding for spacious content */
     box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
     text-align: left;
     display: flex;
     flex-direction: column;
     font-family: 'Manier', sans-serif;
-  }
-  
+}
 
 .modal-content::-webkit-scrollbar {
     display: none;
 }
 
-
 .modal-close {
     position: sticky;
     top: 10px;
-    margin-left: auto; /* Ensures it stays to the right in a flex container */
+    margin-left: auto;
+    /* Ensures it stays to the right in a flex container */
     width: 35px;
     height: 35px;
-    min-width: 35px;   /* Override any default minimum sizing */
+    min-width: 35px;
     min-height: 35px;
-    aspect-ratio: 1 / 1;  /* Guarantees square dimensions */
+    aspect-ratio: 1 / 1;
     padding: 0;
-    border-radius: 50%;   /* Makes the background circular */
+    border-radius: 50%;
     background: var(--lightgreen);
     color: var(--darkgreen);
     border: none;
@@ -285,19 +332,17 @@ h1 {
     cursor: pointer;
     transition: background 0.3s ease, color 0.3s ease;
     z-index: 10;
-  }
-  
-  .modal-close {
-    padding: 0;      
+}
+
+.modal-close {
+    padding: 0;
     appearance: none;
-  }
-  
-  
-  .modal-close:hover {
+}
+
+.modal-close:hover {
     background: var(--darkgreen);
     color: #fff;
-  }
-  
+}
 
 /* Standardized Headers */
 .modal-html h1 {
@@ -381,6 +426,11 @@ h1 {
     font-weight: bold;
 }
 
+.modal-html footer p {
+    font-size: 1.1rem;
+    margin-top: 10px;
+}
+
 /* Modal body list */
 .modal-body ul {
     color: var(--darkgreen);
@@ -388,34 +438,36 @@ h1 {
 
 @keyframes modalOpen {
     0% {
-      opacity: 0;
-      transform: scale(0.95);
+        opacity: 0;
+        transform: scale(0.95);
     }
+
     100% {
-      opacity: 1;
-      transform: scale(1);
+        opacity: 1;
+        transform: scale(1);
     }
-  }
-  
-  /* The modal opens with modalOpen */
-  .modal-content {
+}
+
+/* The modal opens with modalOpen */
+.modal-content {
     animation: modalOpen 0.3s ease-out;
-  }
-  
-  @keyframes modalClose {
+}
+
+@keyframes modalClose {
     0% {
-      opacity: 1;
-      transform: scale(1);
+        opacity: 1;
+        transform: scale(1);
     }
+
     100% {
-      opacity: 0;
-      transform: scale(0.95);
+        opacity: 0;
+        transform: scale(0.95);
     }
-  }
-  
-  .modal-content.closing {
+}
+
+.modal-content.closing {
     animation: modalClose 0.3s ease-out;
-  }
+}
 
 /* ============================================================
    10. Section Template & Content
@@ -451,20 +503,19 @@ h1 {
     --gap: 5px;
     --_c: var(--color) var(--border), #0000 0 calc(100% - var(--border)), var(--color) 0;
     --_o: calc(3 * var(--offset));
-    padding: calc(var(--gap) + var(--border))
-        calc(var(--gap) + var(--border) + var(--offset))
-        calc(var(--gap) + var(--border) + var(--offset))
-        calc(var(--gap) + var(--border));
+    padding: calc(var(--gap) + var(--border)) calc(var(--gap) + var(--border) + var(--offset)) calc(var(--gap) + var(--border) + var(--offset)) calc(var(--gap) + var(--border));
     background: linear-gradient(var(--_c)) var(--_o) var(--_o),
         linear-gradient(90deg, var(--_c)) var(--_o) var(--_o);
     background-size: calc(100% - var(--_o)) calc(100% - var(--_o));
     background-repeat: no-repeat;
     filter: grayscale(0.4);
     transition: 1s;
-    cursor: pointer;
 }
 
 .section-image img {
+    margin-top: 5px;
+    margin-left: 3px;
+    margin-right: 3px;
     width: 100%;
     height: 100%;
 }
@@ -504,7 +555,7 @@ h1 {
 }
 
 /* ============================================================
-   11. Snap Scrolling Rules
+   11. Snap Scrolling Rules and Effects
    ============================================================ */
 .page-wrapper {
     overflow-y: auto;
@@ -520,6 +571,28 @@ h1 {
 footer {
     scroll-snap-align: start;
     scroll-snap-stop: always;
+}
+
+/* (Removed container fade-in styles so the sections remain visible by default) */
+
+/* ============================================================
+   Slide-In for Headings and Paragraphs
+   ============================================================ */
+.section h1,
+.section p,
+.sponsors h1,
+.sponsors p,
+footer h1,
+footer p,
+button {
+    opacity: 0;
+    transform: translateX(-50px);
+    transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+}
+
+.slide-in {
+    opacity: 1 !important;
+    transform: translateX(0) !important;
 }
 
 /* ============================================================
@@ -547,10 +620,11 @@ footer {
     text-align: right;
 }
 
-#workshops .button:hover,
-#sponsors .sponsors-bottom-content .button:hover, 
-footer .button:hover {
-    background: var(--lightgreen);
+.landing {
+    background-attachment: fixed;
+    /* Creates a simple parallax effect */
+    background-size: cover;
+    background-position: center;
 }
 
 /* ============================================================
@@ -931,7 +1005,7 @@ footer .button:hover {
         gap: 30px;
     }
 
-    .scroll-to-top{
+    .scroll-to-top {
         display: none;
     }
 }

@@ -1,79 +1,79 @@
 document.addEventListener("DOMContentLoaded", () => {
-  // Menu Toggle Variables
-  const arrow = document.getElementById('arrow');
-  const navMenu = document.getElementById('navMenu');
-  const bottomContent = document.querySelector('.bottom-content');
+  // --------------------------------------------------
+  // 1. Menu Toggle Functionality
+  // --------------------------------------------------
+  const arrow = document.getElementById("arrow");
+  const navMenu = document.getElementById("navMenu");
+  const bottomContent = document.querySelector(".bottom-content");
   const pageWrapper = document.querySelector(".page-wrapper");
 
-  // Toggle nav menu on arrow click
-  arrow.addEventListener('click', () => {
-    navMenu.classList.toggle('active');
-    arrow.classList.toggle('active');
-    
-    if (arrow.classList.contains('active')) {
-      arrow.innerHTML = '<i class="fa-solid fa-circle-xmark"></i>'; // cross symbol
-      bottomContent.classList.add('hidden');
+  arrow.addEventListener("click", () => {
+    navMenu.classList.toggle("active");
+    arrow.classList.toggle("active");
+
+    if (arrow.classList.contains("active")) {
+      arrow.innerHTML = '<i class="fa-solid fa-xmark"></i>';
+      bottomContent.classList.add("hidden");
     } else {
-      arrow.innerHTML = '<i class="fa-solid fa-circle-arrow-down fa-bounce"></i>'; // down arrow
-      bottomContent.classList.remove('hidden');
+      arrow.innerHTML = '<i class="fa-solid fa-bars"></i>';
+      bottomContent.classList.remove("hidden");
     }
   });
 
-  // Close the menu when the user scrolls
-  pageWrapper.addEventListener('scroll', () => {
-    // Make sure the page is scrollable
-    if (navMenu.classList.contains('active')) {
-      navMenu.classList.remove('active');
-      arrow.classList.remove('active');
-      arrow.innerHTML = '<i class="fa-solid fa-circle-arrow-down fa-bounce"></i>';
-      bottomContent.classList.remove('hidden');
+  pageWrapper.addEventListener("scroll", () => {
+    if (navMenu.classList.contains("active")) {
+      navMenu.classList.remove("active");
+      arrow.classList.remove("active");
+      arrow.innerHTML = '<i class="fa-solid fa-bars"></i>';
+      bottomContent.classList.remove("hidden");
     }
   });
 
-  // Also close the menu when a nav link is clicked and scroll smoothly
-  document.querySelectorAll('.nav-menu a').forEach(link => {
-    link.addEventListener('click', function(e) {
+  document.querySelectorAll(".nav-menu a").forEach((link) => {
+    link.addEventListener("click", function (e) {
       e.preventDefault();
-      if (navMenu.classList.contains('active')) {
-        navMenu.classList.remove('active');
-        arrow.classList.remove('active');
-        arrow.innerHTML = '<i class="fa-solid fa-circle-arrow-down fa-bounce"></i>';
-        bottomContent.classList.remove('hidden');
+      if (navMenu.classList.contains("active")) {
+        navMenu.classList.remove("active");
+        arrow.classList.remove("active");
+        arrow.innerHTML = '<i class="fa-solid fa-bars"></i>';
+        bottomContent.classList.remove("hidden");
       }
-      const targetId = this.getAttribute('href');
+      const targetId = this.getAttribute("href");
       const target = document.querySelector(targetId);
       if (target) {
-        target.scrollIntoView({ behavior: 'smooth' });
+        target.scrollIntoView({ behavior: "smooth" });
       }
     });
   });
 
-  // Intersection Observer for Section Images
-  const sectionImages = document.querySelectorAll('.section-image');
-  const observerOptions = {
-    threshold: 0.5 // triggers when 50% of the element is visible
-  };
+  // --------------------------------------------------
+  // 2. Intersection Observer for Section Images
+  // --------------------------------------------------
+  const sectionImages = document.querySelectorAll(".section-image");
+  const imageObserverOptions = { threshold: 0.5 };
 
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
+  const imageObserver = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
       if (entry.isIntersecting) {
-        entry.target.classList.add('in-view');
+        entry.target.classList.add("in-view");
       } else {
-        entry.target.classList.remove('in-view');
+        entry.target.classList.remove("in-view");
       }
     });
-  }, observerOptions);
+  }, imageObserverOptions);
 
-  sectionImages.forEach(img => {
-    observer.observe(img);
+  sectionImages.forEach((img) => {
+    imageObserver.observe(img);
   });
 
-  // Merch Slide Show
+  // --------------------------------------------------
+  // 3. Slide Show Functionality (Merch & Sponsor)
+  // --------------------------------------------------
   const merchSlides = [
     "img/Crew.png",
     "img/Tee-Bone.png",
     "img/Tee-Pine Green.png",
-    "img/Tee-Natural.png"
+    "img/Tee-Natural.png",
   ];
   let merchIndex = 0;
   const merchSlide = document.getElementById("merch-slide");
@@ -88,11 +88,10 @@ document.addEventListener("DOMContentLoaded", () => {
   }
   setInterval(showNextMerchSlide, 5000);
 
-  // Sponsor Slide Show
   const sponsorSlides = [
     "img/type-logo.jpg",
     "img/tcf-logo.svg",
-    "img/signnation-logo.png"
+    "img/signnation-logo.png",
   ];
   let sponsorIndex = 0;
   const sponsorSlide = document.getElementById("sponsor-slide");
@@ -107,20 +106,19 @@ document.addEventListener("DOMContentLoaded", () => {
   }
   setInterval(showNextSponsorSlide, 5000);
 
-  // Modal Functionality
+  // --------------------------------------------------
+  // 4. Modal Functionality
+  // --------------------------------------------------
   const modal = document.getElementById("popup-modal");
   const modalContent = modal.querySelector(".modal-content");
   const modalBody = modal.querySelector(".modal-body");
   const modalClose = modal.querySelector(".modal-close");
 
   function closeModal() {
-    console.log("Close button clicked. Starting closing animation.");
     modalContent.classList.add("closing");
-
     modalContent.addEventListener(
       "animationend",
       () => {
-        console.log("Closing animation ended. Hiding modal.");
         modal.style.display = "none";
         modalBody.innerHTML = "";
         modalContent.classList.remove("closing");
@@ -129,7 +127,6 @@ document.addEventListener("DOMContentLoaded", () => {
     );
   }
 
-  // Open modal on popup button click
   document.querySelectorAll(".popup-button").forEach((button) => {
     button.addEventListener("click", (e) => {
       e.preventDefault();
@@ -139,8 +136,7 @@ document.addEventListener("DOMContentLoaded", () => {
       if (hiddenContent) {
         modal.style.display = "flex";
         modalBody.innerHTML = "";
-        void modalBody.offsetHeight; // Force reflow
-
+        void modalBody.offsetHeight;
         setTimeout(() => {
           modalBody.innerHTML = hiddenContent.innerHTML;
           modalBody.scrollTop = 0;
@@ -149,19 +145,81 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   });
 
-  // Close modal when the close button is clicked
   modalClose.addEventListener("click", closeModal);
 
-  // Close modal when clicking outside the modal content
   window.addEventListener("click", (e) => {
     if (e.target === modal) {
       closeModal();
     }
   });
 
-  // Loading Screen Hide on Window Load
+  // --------------------------------------------------
+  // 5. Hide the Loading Screen on Window Load
+  // --------------------------------------------------
   const loadingScreen = document.querySelector(".loadingScreen");
-  window.addEventListener('load', function() {
-    loadingScreen.style.display = 'none';
+  window.addEventListener("load", function () {
+    loadingScreen.style.display = "none";
   });
+
+  // --------------------------------------------------
+  // 6. Slide-In Animation for Headings and Paragraphs
+  // --------------------------------------------------
+  const slideElements = document.querySelectorAll(
+    ".section h1, .section p, .sponsors h1, .sponsors p, footer h1, footer p, button"
+  );
+
+  const slideObserver = new IntersectionObserver(
+    (entries, observer) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("slide-in");
+          observer.unobserve(entry.target);
+        }
+      });
+    },
+    { threshold: 0.2 }
+  );
+
+  slideElements.forEach((el) => slideObserver.observe(el));
+
+  // --------------------------------------------------
+  // 7. Animate Counter with Comma Formatting
+  // --------------------------------------------------
+  function animateCounter(el) {
+    const target = parseInt(el.getAttribute("data-target"), 10);
+    const duration = 2000;
+    const startTime = performance.now();
+
+    function updateCounter(currentTime) {
+      const elapsed = currentTime - startTime;
+      const progress = Math.min(elapsed / duration, 1);
+      const currentValue = Math.floor(progress * target);
+      el.innerText = "$" + currentValue.toLocaleString();
+      if (progress < 1) {
+        requestAnimationFrame(updateCounter);
+      } else {
+        el.innerText = "$" + target.toLocaleString();
+      }
+    }
+    requestAnimationFrame(updateCounter);
+  }
+
+  const counterEl = document.querySelector(".counter");
+  if (counterEl) {
+    const counterObserver = new IntersectionObserver(
+      (entries, observer) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            animateCounter(entry.target);
+            observer.unobserve(entry.target);
+          }
+        });
+      },
+      { threshold: 0.5 }
+    );
+    counterObserver.observe(counterEl);
+  }
 });
+
+
+

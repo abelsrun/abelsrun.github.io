@@ -21,13 +21,13 @@
     <div class="loadingScreen">
         <h1><i class="fa-solid fa-spinner fa-spin-pulse"></i></h1>
     </div>
-    
+
     <div class="page-wrapper">
         <!-- Landing container -->
         <div class="landing" id="landing">
             <img src="img/logo.png" alt="Logo" class="logo" id="logo">
             <div class="arrow" id="arrow">
-                <i class="fa-solid fa-circle-arrow-down fa-bounce"></i>
+                <i class="fa-solid fa-bars"></i>
             </div>
             <!-- Bottom content wrapper -->
             <div class="bottom-content">
@@ -61,10 +61,9 @@
                         meaningful services, we aim to foster a love for nature and a commitment to its preservation.
                         Find out more about our story and our mission below.
                     </p>
-                    <button class="button popup-button" data-modal-id="modal-content-about">
+                    <button class="button" data-modal-id="modal-content-about">
                         About Us <i class="fa-solid fa-arrow-right"></i>
                     </button>
-
                 </div>
             </div>
         </section>
@@ -82,7 +81,7 @@
                         clubs, and after-school programs. Rather than traditional direct instruction learning, our
                         approach emphasizes inquiry based hands-on learning with a focus on enjoyable and rewarding
                         experiences.</p>
-                    <button class="button popup-button" data-modal-id="modal-content-workshops">
+                    <button class="button" data-modal-id="modal-content-workshops">
                         Learn More <i class="fa-solid fa-arrow-right"></i>
                     </button>
                 </div>
@@ -106,7 +105,7 @@
                     <img src="img/signnation-logo.png" alt="Sign Nation">
                 </div>
 
-                <button class="button popup-button" data-modal-id="modal-content-sponsors">
+                <button class="button" data-modal-id="modal-content-sponsors">
                     Can you lend a hand? <i class="fa-solid fa-arrow-right"></i>
                 </button>
             </div>
@@ -114,7 +113,8 @@
             <!-- Bottom half: background with overlay content -->
             <div class="sponsors-bottom">
                 <div class="sponsors-bottom-content">
-                    <h1>Together, we've raised $12,055</h1>
+                    <h1>Together, we've raised:</h1>
+                    <h1><span class="counter" data-target="12055">0</span></h1>
                     <p>As of 4th of Feburary 2025</p>
                     <a href="https://square.link/u/orSLQgmo" target="_blank" class="button">Looking to Contribute? <i
                             class="fa-solid fa-arrow-right"></i></a>
@@ -146,7 +146,7 @@
                     <input type="text" name="name" placeholder="Your Name" required>
                     <input type="email" name="email" placeholder="Your Email" required>
                     <textarea name="message" placeholder="Your Message" required></textarea>
-                    <button type="submit" class="button">Send Message</button>
+                    <button type="submit" class="button">Send Message <i class="fa-regular fa-paper-plane"></i></button>
                 </form>
 
                 <div class="footer-icons">
@@ -163,6 +163,7 @@
                 <!-- Bottom section: Footer text -->
                 <div class="footer-bottom">
                     <p>2025 Abels Run. All Rights Reserved.<br> ABN: 292 438 725 25</p>
+                    <p>We acknowledge and pay respect to the Tasmanian Aboriginal people as the traditional and original owners, and continuing custodians of this land on which we gather today and acknowledge Elders – past, present and Tasmanian Aboriginal people.</p>
                 </div>
         </footer>
         <!-- Modal Popup (initially hidden) -->
@@ -175,8 +176,7 @@
             </div>
         </div>
     </div>
-    
-    
+
 
     <script src="script.js"></script>
 
@@ -228,9 +228,6 @@
                     launchpad
                     for his broader program, with the goal of establishing Abels Run as a not-for-profit charity.
 
-
-            </section>
-            <footer>
                 <h2>Meet the <span class="highlight">Team</span></h2>
                 <h4>Noah Etherington <span class="highlight">- Founder</span></h4>
                 <p>Noah is the driving force behind Abel's Run—the walker who initiated this journey and will be running
@@ -241,6 +238,7 @@
                     particularly the younger generation. His experiences and insights have fueled his passion for
                     creating a space where youth can reconnect with nature, break away from the digital world, and
                     rediscover the benefits of the outdoors.</p>
+
                 <h4>Tyler Hall<span class="highlight"> - Supporting Founder</span></h4>
                 <p>Tyler is the second key figure in Abel's Run, having supported Noah from the very beginning. His
                     contributions have been invaluable, particularly in the areas of design and motivation. A family man
@@ -250,14 +248,14 @@
                     that aligns with the high standards we set for this project. Together, we are committed to striving
                     towards this achievement as a testament to the quality and impact of our work.</p>
 
+            </section>
 
-            </footer>
             <section id="sheila">
                 <h4>This mission is dedicated to <span class="highlight">Sheila Jackson.</span></h4>
                 <h3>Sheila was a loving grandmother, mother, and wife. She will always be remembered.</h3>
                 <img src="img/sheila.jpg" alt="Sheila Jackson">
             </section>
-            
+
         </div>
     </div>
 
@@ -301,9 +299,7 @@
                     them while gently shifting their focus away from a technology-driven world, reintroducing them to
                     the healing and calming power of nature—something Tasmania is rich in and that is known to benefit
                     mental well-being.</p>
-            </section>
 
-            <footer>
                 <h2>Expected <span class="highlight">Outcomes</span></h2>
                 <h4>Increased Engagement with <span class="highlight">Nature.</span></h4>
                 <p>By shifting students away from technology and providing an alternative experience in our natural
@@ -325,7 +321,7 @@
                 <p>As our identified problem is one most understand, we hope to strengthen community ties and build a
                     supportive network for the youth of Tasmania. Collaboration with local businesses and involving the
                     community in the program, we benefit all involved.</p>
-            </footer>
+            </section>
         </div>
     </div>
 
