@@ -158,9 +158,10 @@ document.addEventListener("DOMContentLoaded", () => {
       modalBody.innerHTML = ""; // Reset content when closing
     }
   });
+
+  var loadingScreen = document.querySelector(".loadingScreen");
+  window.addEventListener('load', function() {
+    loadingScreen.style.display = 'none';
+  });
 });
 
-var loadingScreen = document.querySelector(".loadingScreen");
-window.addEventListener('load', function() {
-  loadingScreen.style.display = 'none';
-});
