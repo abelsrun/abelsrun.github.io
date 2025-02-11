@@ -68,7 +68,7 @@ h1 {
 /* ============================================================
    4. Custom Button Styles
    ============================================================ */
-   .button {
+.button {
     display: inline-block;
     background: var(--lightgreen);
     color: var(--darkgreen);
@@ -83,29 +83,29 @@ h1 {
     letter-spacing: 0.5px;
     cursor: pointer;
     transition: background 0.3s ease, transform 0.3s ease,
-                box-shadow 0.3s ease, border-color 0.3s ease;
-  }
-  
-  /* Desktop hover state */
-  .button:hover {
+        box-shadow 0.3s ease, border-color 0.3s ease;
+}
+
+/* Desktop hover state */
+.button:hover {
     background: var(--darkgreen);
     border-color: var(--lightgreen);
     transform: translateY(-2px) scale(1.02);
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
     color: #fff;
-  }
-  
-  /* Mobile (or devices without hover) enhanced state */
-  @media (hover: none) and (pointer: coarse) {
+}
+
+/* Mobile (or devices without hover) enhanced state */
+@media (hover: none) and (pointer: coarse) {
     .button {
-      background: var(--lightgreen);
-      color: var(--darkgreen);
-      border: none;
-      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-      /* Optionally, keep a subtle lift */
-      transform: translateY(-2px);
+        background: var(--lightgreen);
+        color: var(--darkgreen);
+        border: none;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        /* Optionally, keep a subtle lift */
+        transform: translateY(-2px);
     }
-  }
+}
 
 /* ============================================================
    5. Landing Container & Logo Styles
@@ -556,34 +556,28 @@ h1 {
 /* ============================================================
    11. Snap Scrolling Rules and Effects
    ============================================================ */
-.page-wrapper {
+   .page-wrapper {
     overflow-y: auto;
     height: 100vh;
     scroll-padding-top: 0;
-    scroll-snap-type: y mandatory;
-    scroll-snap-stop: always;
+    scroll-snap-type: none;
 }
 
+/* Disable snapping for specific sections on mobile */
 .landing,
 .section,
 .sponsors,
 footer {
-    scroll-snap-align: start;
-    scroll-snap-stop: always;
+  scroll-snap-align: none;
+  scroll-snap-stop: normal;
 }
-
-/* (Removed container fade-in styles so the sections remain visible by default) */
 
 /* ============================================================
    Slide-In for Headings and Paragraphs
    ============================================================ */
 .section h1,
 .section p,
-.sponsors h1,
-.sponsors p,
-footer h1,
-footer p,
-button {
+.sponsors h1 {
     opacity: 0;
     transform: translateX(-50px);
     transition: opacity 0.8s ease-out, transform 0.8s ease-out;
@@ -621,7 +615,6 @@ button {
 
 .landing {
     background-attachment: fixed;
-    /* Creates a simple parallax effect */
     background-size: cover;
     background-position: center;
 }
@@ -721,11 +714,11 @@ button {
    ============================================================ */
 /* Footer Container */
 .footer {
+    margin: 0;
+    padding: 0;
     background: var(--darkgreenglass);
     color: #fff;
-    padding: 20px;
     font-family: OpenSans, sans-serif;
-    padding-bottom: 3rem;
 }
 
 /* Footer Top Section (Contact Form) */
@@ -774,6 +767,8 @@ button {
     text-align: center;
     font-size: 0.9rem;
     opacity: 0.8;
+    padding: 20px;
+    padding-bottom: 3rem;
 }
 
 .footer-icons {
@@ -806,7 +801,6 @@ button {
     width: 100px;
 }
 
-
 .loadingScreen {
     position: absolute;
     z-index: 5;
@@ -827,11 +821,6 @@ button {
    15. Media Queries
    ============================================================ */
 @media (min-width: 768px) {
-
-    .page-wrapper {
-        scroll-snap-type: y mandatory;
-        scroll-snap-stop: always;
-    }
 
     .logo {
         width: 300px;
@@ -908,6 +897,7 @@ button {
 }
 
 @media (min-width: 1024px) {
+
     .logo {
         width: 350px;
     }
@@ -963,7 +953,15 @@ button {
         gap: 30px;
     }
 
-    .scroll-to-top {
-        display: none;
-    }
+    .page-wrapper {
+        scroll-snap-type: y mandatory;
+        scroll-snap-stop: always;
+      }
+      .landing,
+      .section,
+      .sponsors,
+      footer {
+        scroll-snap-align: start;
+        scroll-snap-stop: always;
+      }
 }
