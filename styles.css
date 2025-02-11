@@ -1,7 +1,7 @@
 /* ============================================================
    1. Font Definitions
    ============================================================ */
-@font-face {
+   @font-face {
     font-family: "Paralucent";
     src: url("./fonts/ParalucentExtraLight.otf");
 }
@@ -58,6 +58,7 @@ h1 {
     font-weight: 500;
 }
 
+/* Highlighted text (merged duplicate) */
 .highlight {
     color: var(--lightgreen);
     font-family: Manier;
@@ -93,7 +94,7 @@ h1 {
 }
 
 /* ============================================================
-   5. Landing Container Styles
+   5. Landing Container & Logo Styles
    ============================================================ */
 .landing {
     height: 100vh;
@@ -109,9 +110,6 @@ h1 {
     background-repeat: no-repeat;
 }
 
-/* ============================================================
-   6. Logo Styles
-   ============================================================ */
 .logo {
     width: 200px;
     filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.2));
@@ -120,7 +118,7 @@ h1 {
 }
 
 /* ============================================================
-   7. Arrow Styles & Animations
+   6. Arrow Styles & Animations
    ============================================================ */
 .arrow {
     margin-top: 20px;
@@ -131,12 +129,10 @@ h1 {
 }
 
 @keyframes glow {
-
     0%,
     100% {
         text-shadow: 0 0 10px var(--lightgreen);
     }
-
     50% {
         text-shadow: 0 0 20px var(--lightgreen);
     }
@@ -152,7 +148,7 @@ h1 {
 }
 
 /* ============================================================
-   8. Navigation Menu Styles
+   7. Navigation Menu Styles
    ============================================================ */
 .nav-menu {
     margin-top: 20px;
@@ -177,6 +173,7 @@ h1 {
     padding: 10px;
     border-radius: 5px;
     transition: background 0.3s;
+    text-decoration: none;
 }
 
 .nav-menu a:hover {
@@ -185,7 +182,7 @@ h1 {
 }
 
 /* ============================================================
-   9. Bottom Content (Heading & Paragraph) Styles
+   8. Bottom Content (Heading & Paragraph) Styles
    ============================================================ */
 .bottom-content {
     overflow: hidden;
@@ -222,6 +219,9 @@ h1 {
     transition: opacity 0.3s ease;
 }
 
+/* ============================================================
+   9. Modal Styles
+   ============================================================ */
 /* Modal container */
 .modal {
     position: fixed;
@@ -231,7 +231,7 @@ h1 {
     height: 100%;
     background: var(--darkgreenglass);
     /* Darker overlay for better focus */
-    backdrop-filter: blur(5px);
+    backdrop-filter: blur(10px);
     display: none;
     justify-content: center;
     align-items: center;
@@ -240,38 +240,64 @@ h1 {
 
 /* Modal content box */
 .modal-content {
+    position: relative;
     background: var(--glass);
     margin: 1rem;
     max-width: 1000px;
     max-height: 70vh;
     overflow-y: auto;
-    border-radius: 12px;
-    padding-right: 30px;
-    padding-left: 30px;
+    border-radius: 16px;   /* Increased border-radius for softer corners */
+    padding: 2rem;         /* More padding for spacious content */
     position: relative;
     box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
     text-align: left;
     display: flex;
     flex-direction: column;
     font-family: 'Manier', sans-serif;
+  }
+  
+
+.modal-content::-webkit-scrollbar {
+    display: none;
 }
 
-/* Close button */
+
 .modal-close {
     position: sticky;
-    display: inline-block;
-    top: 20px;
-    right: 20px;
-    font-size: 1.8rem;
-    cursor: pointer;
-    color: var(--lightgreen);
-    transition: color 0.3s ease-in-out;
-    text-align: right;
-}
-
-.modal-close:hover {
+    top: 10px;
+    margin-left: auto; /* Ensures it stays to the right in a flex container */
+    width: 35px;
+    height: 35px;
+    min-width: 35px;   /* Override any default minimum sizing */
+    min-height: 35px;
+    aspect-ratio: 1 / 1;  /* Guarantees square dimensions */
+    padding: 0;
+    border-radius: 50%;   /* Makes the background circular */
+    background: var(--lightgreen);
     color: var(--darkgreen);
-}
+    border: none;
+    box-sizing: border-box;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+    line-height: 1;
+    cursor: pointer;
+    transition: background 0.3s ease, color 0.3s ease;
+    z-index: 10;
+  }
+  
+  .modal-close {
+    padding: 0;      
+    appearance: none;
+  }
+  
+  
+  .modal-close:hover {
+    background: var(--darkgreen);
+    color: #fff;
+  }
+  
 
 /* Standardized Headers */
 .modal-html h1 {
@@ -323,11 +349,6 @@ h1 {
     text-decoration: none;
 }
 
-/* Highlighted text */
-.highlight {
-    color: var(--lightgreen);
-}
-
 /* Paragraphs */
 .modal-html p {
     font-size: 1.1rem;
@@ -349,7 +370,7 @@ h1 {
     border-radius: 8px;
 }
 
-/* Footer Section */
+/* Footer Section within Modal */
 .modal-html footer {
     margin-top: 30px;
     text-align: center;
@@ -360,22 +381,41 @@ h1 {
     font-weight: bold;
 }
 
+/* Modal body list */
 .modal-body ul {
     color: var(--darkgreen);
 }
 
-.modal-content::-webkit-scrollbar {
-    display: none;
-}
-
-.modal-content {
-    -ms-overflow-style: none;
-    /* IE and Edge */
-    scrollbar-width: none;
-    /* Firefox */
-}
-
-
+@keyframes modalOpen {
+    0% {
+      opacity: 0;
+      transform: scale(0.95);
+    }
+    100% {
+      opacity: 1;
+      transform: scale(1);
+    }
+  }
+  
+  /* The modal opens with modalOpen */
+  .modal-content {
+    animation: modalOpen 0.3s ease-out;
+  }
+  
+  @keyframes modalClose {
+    0% {
+      opacity: 1;
+      transform: scale(1);
+    }
+    100% {
+      opacity: 0;
+      transform: scale(0.95);
+    }
+  }
+  
+  .modal-content.closing {
+    animation: modalClose 0.3s ease-out;
+  }
 
 /* ============================================================
    10. Section Template & Content
@@ -390,7 +430,6 @@ h1 {
     box-sizing: border-box;
     background-color: var(--glass);
 }
-
 
 .section-content {
     display: flex;
@@ -412,7 +451,10 @@ h1 {
     --gap: 5px;
     --_c: var(--color) var(--border), #0000 0 calc(100% - var(--border)), var(--color) 0;
     --_o: calc(3 * var(--offset));
-    padding: calc(var(--gap) + var(--border)) calc(var(--gap) + var(--border) + var(--offset)) calc(var(--gap) + var(--border) + var(--offset)) calc(var(--gap) + var(--border));
+    padding: calc(var(--gap) + var(--border))
+        calc(var(--gap) + var(--border) + var(--offset))
+        calc(var(--gap) + var(--border) + var(--offset))
+        calc(var(--gap) + var(--border));
     background: linear-gradient(var(--_c)) var(--_o) var(--_o),
         linear-gradient(90deg, var(--_c)) var(--_o) var(--_o);
     background-size: calc(100% - var(--_o)) calc(100% - var(--_o));
@@ -425,27 +467,21 @@ h1 {
 .section-image img {
     width: 100%;
     height: 100%;
-
 }
 
 .store-image {
     flex: 1;
     display: flex;
     justify-content: center;
-    /* Centers the image horizontally */
     align-items: center;
-    /* Centers the image vertically */
     transition: transform 0.3s ease, opacity 0.3s ease;
-    /* Smooth transition */
 }
 
 .store-image img {
     width: 100%;
-    /* Adjust image size */
     max-height: 600px;
     height: auto;
     border-radius: 10px;
-    /* Rounded corners */
     transition: opacity 1s ease-in-out;
 }
 
@@ -474,6 +510,8 @@ h1 {
     overflow-y: auto;
     height: 100vh;
     scroll-padding-top: 0;
+    scroll-snap-type: y mandatory;
+    scroll-snap-stop: always;
 }
 
 .landing,
@@ -497,11 +535,9 @@ footer {
     color: var(--darkgreen);
 }
 
-
 #workshops {
     background: var(--darkgreenglass);
 }
-
 
 #workshops h1 {
     color: white;
@@ -545,21 +581,16 @@ footer .button:hover {
     flex: 1;
     display: flex;
     justify-content: center;
-    /* Centers content horizontally */
     align-items: center;
-    /* Centers content vertically */
     overflow: hidden;
-    /* Prevents overflow if the image doesn't perfectly fit */
     transition: transform 0.3s ease, opacity 0.3s ease;
     background-color: transparent;
-    /* A placeholder background color, if needed */
 }
 
 .sponsor-image img {
     width: 100%;
     height: 100%;
     object-fit: contain;
-    /* Fill the container; use "contain" if you want the whole image visible */
     transition: opacity 1s ease-in-out;
 }
 
@@ -614,7 +645,7 @@ footer .button:hover {
     text-align: center;
     font-weight: 700;
     margin-top: 0;
-    margin-bottom: 0px
+    margin-bottom: 0px;
 }
 
 .sponsors-bottom-content p {
@@ -631,6 +662,9 @@ footer .button:hover {
     display: none;
 }
 
+/* ============================================================
+   14. Footer & Utility Styles
+   ============================================================ */
 /* Footer Container */
 .footer {
     background: var(--darkgreenglass);
@@ -679,7 +713,6 @@ footer .button:hover {
 /* Reuse your button style */
 .contact-form button {
     align-self: center;
-    /* If you already have a button style defined as .button, this will inherit that style */
 }
 
 /* Footer Bottom Section */
@@ -720,10 +753,10 @@ footer .button:hover {
 }
 
 .scroll-to-top {
-    position: fixed; /* Fixed to viewport */
+    position: fixed;
     left: 50%;
-    bottom: 10vh; /* Adjust as needed */
-    transform: translateX(-50%); /* Center horizontally */
+    bottom: 10vh;
+    transform: translateX(-50%);
     background-color: transparent;
     border-radius: 50%;
     color: var(--darkgreen);
@@ -735,14 +768,14 @@ footer .button:hover {
     opacity: 0;
     visibility: hidden;
     transition: opacity 0.3s ease-in-out, visibility 0.3s;
-  }
-  
-  .scroll-to-top.show {
+}
+
+.scroll-to-top.show {
     opacity: 1;
     visibility: visible;
-  }
+}
 
-  .loadingScreen {
+.loadingScreen {
     position: absolute;
     z-index: 5;
     width: 100%;
@@ -751,16 +784,15 @@ footer .button:hover {
     display: flex;
     align-items: center;
     justify-content: center;
-  }
+}
 
-  .loadingScreen h1 {
+.loadingScreen h1 {
     font-size: clamp(2rem, 3vw, 4rem);
     color: var(--lightgreen);
-  }
-  
+}
 
 /* ============================================================
-   14. Media Queries
+   15. Media Queries
    ============================================================ */
 @media (min-width: 768px) {
 
@@ -820,18 +852,16 @@ footer .button:hover {
         justify-content: center;
         align-items: center;
         gap: 50px;
-        /* Adjust gap as needed */
     }
 
     .sponsor-icons img {
         max-width: 200px;
-        /* Adjust this value to control image size */
         height: auto;
         padding-bottom: 50px;
     }
 
     .sponsors-top h1 {
-        margin-bottom: 50px
+        margin-bottom: 50px;
     }
 
     .tas img {
@@ -843,8 +873,6 @@ footer .button:hover {
         height: 200px;
         width: 200px;
     }
-
-
 }
 
 @media (min-width: 1024px) {
@@ -893,7 +921,6 @@ footer .button:hover {
 
     .sponsor-icons {
         gap: 100px;
-        /* Adjust gap as needed */
     }
 
     .tas img {
@@ -907,5 +934,4 @@ footer .button:hover {
     .scroll-to-top{
         display: none;
     }
-
 }
