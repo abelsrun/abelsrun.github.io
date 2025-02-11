@@ -140,31 +140,39 @@
         <footer class="footer" id="footer">
             <!-- Top section: Contact form -->
             <div class="footer-top">
-                <form class="contact-form" form action="https://formsubmit.co/hello@abelsrun.org.au" method="POST">
-                    <h2>Contact <span class="highlight">Us</span></h2>
-                    <input type="text" name="name" placeholder="Your Name" required>
-                    <input type="email" name="email" placeholder="Your Email" required>
-                    <textarea name="message" placeholder="Your Message" required></textarea>
-                    <button type="submit" class="button">Send Message <i class="fa-regular fa-paper-plane"></i></button>
-                </form>
-
-                <div class="footer-icons">
-                    <div class="tas">
-                        <img src="img/tas.png" alt="Tasmanian">
-                    </div>
-
-                    <div class="acnc">
-                        <img src="img/ACNC-Registered-Charity-Logo_RGB.png" alt="ACNC">
-                    </div>
+              <form class="contact-form" action="https://formsubmit.co/hello@abelsrun.org.au" method="POST">
+                <h2>Contact <span class="highlight">Us</span></h2>
+                <input type="text" name="name" placeholder="Your Name" required>
+                <input type="email" name="email" placeholder="Your Email" required>
+                <textarea name="message" placeholder="Your Message" required></textarea>
+                <button type="submit" class="button">
+                  Send Message <i class="fa-regular fa-paper-plane"></i>
+                </button>
+              </form>
+          
+              <div class="footer-icons">
+                <div class="tas">
+                  <img src="img/tas.png" alt="Tasmanian">
                 </div>
-
-
-                <!-- Bottom section: Footer text -->
-                <div class="footer-bottom">
-                    <p>2025 Abels Run. All Rights Reserved.<br> ABN: 292 438 725 25</p>
-                    <p>We acknowledge and pay respect to the Tasmanian Aboriginal people as the traditional and original owners, and continuing custodians of this land on which we gather today and acknowledge Elders – past, present and Tasmanian Aboriginal people.</p>
+          
+                <div class="acnc">
+                  <img src="img/ACNC-Registered-Charity-Logo_RGB.png" alt="ACNC">
                 </div>
-        </footer>
+              </div>
+            </div> <!-- End .footer-top -->
+          
+            <!-- Bottom section: Footer text -->
+            <div class="footer-bottom">
+              <p>
+                2025 Abels Run. All Rights Reserved.<br>
+                ABN: 292 438 725 25
+              </p>
+              <p>
+                We acknowledge and pay respect to the Tasmanian Aboriginal people as the traditional and original owners, and continuing custodians of this land on which we gather today and acknowledge Elders – past, present and Tasmanian Aboriginal people.
+              </p>
+            </div>
+          </footer>
+          
         
         <!-- Modal Popup (initially hidden) -->
         <div id="popup-modal" class="modal">
