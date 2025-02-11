@@ -68,45 +68,44 @@ h1 {
 /* ============================================================
    4. Custom Button Styles
    ============================================================ */
-.button {
+   .button {
     display: inline-block;
     background: var(--lightgreen);
     color: var(--darkgreen);
     padding: 12px 24px;
     font-size: clamp(0.7rem, 2vw, 1rem);
-    font-family: OpenSans, sans-serif;
+    font-family: Paralucent;
     border: 2px solid transparent;
     border-radius: 6px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    text-transform: none;
     text-decoration: none;
     font-weight: 600;
     letter-spacing: 0.5px;
     cursor: pointer;
-    transition: background 0.3s ease,
-        transform 0.3s ease,
-        box-shadow 0.3s ease,
-        border-color 0.3s ease;
-}
-
-.button:hover {
+    transition: background 0.3s ease, transform 0.3s ease,
+                box-shadow 0.3s ease, border-color 0.3s ease;
+  }
+  
+  /* Desktop hover state */
+  .button:hover {
     background: var(--darkgreen);
     border-color: var(--lightgreen);
-    transform: translateY(-2px);
+    transform: translateY(-2px) scale(1.02);
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
     color: #fff;
-}
-
-/* Fade-in effect for buttons on scroll */
-.button.fade-button {
-    opacity: 0;
-    transition: opacity 0.8s ease-out;
-}
-
-.button.fade-button.fade-in {
-    opacity: 1;
-}
-
+  }
+  
+  /* Mobile (or devices without hover) enhanced state */
+  @media (hover: none) and (pointer: coarse) {
+    .button {
+      background: var(--lightgreen);
+      color: var(--darkgreen);
+      border: none;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+      /* Optionally, keep a subtle lift */
+      transform: translateY(-2px);
+    }
+  }
 
 /* ============================================================
    5. Landing Container & Logo Styles
@@ -668,25 +667,6 @@ button {
     transition: opacity 1s ease-in-out;
 }
 
-.sponsor-button {
-    margin-top: 20px;
-    padding: 12px 24px;
-    font-size: 1.2rem;
-    border: none;
-    background: var(--lightgreen);
-    color: var(--darkgreen);
-    border-radius: 5px;
-    cursor: pointer;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    transition: background 0.3s ease, transform 0.3s ease;
-}
-
-.sponsor-button:hover {
-    background: var(--lightgreen);
-    color: #fff;
-    transform: scale(1.05);
-}
 
 .sponsors-bottom {
     height: 50vh;
@@ -826,28 +806,6 @@ button {
     width: 100px;
 }
 
-.scroll-to-top {
-    position: fixed;
-    left: 50%;
-    bottom: 10vh;
-    transform: translateX(-50%);
-    background-color: transparent;
-    border-radius: 50%;
-    color: var(--darkgreen);
-    border: none;
-    padding: 10px 10px;
-    font-size: 2rem;
-    cursor: pointer;
-    z-index: 9999;
-    opacity: 0;
-    visibility: hidden;
-    transition: opacity 0.3s ease-in-out, visibility 0.3s;
-}
-
-.scroll-to-top.show {
-    opacity: 1;
-    visibility: visible;
-}
 
 .loadingScreen {
     position: absolute;
