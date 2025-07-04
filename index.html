@@ -136,15 +136,17 @@
         <footer class="footer" id="footer">
             <!-- Top section: Contact form -->
             <div class="footer-top">
-                <form class="contact-form" action="https://formsubmit.co/hello@abelsrun.org.au" method="POST">
-                    <h2>Contact <span class="highlight">Us</span></h2>
-                    <input type="text" name="name" placeholder="Your Name" required>
-                    <input type="email" name="email" placeholder="Your Email" required>
-                    <textarea name="message" placeholder="Your Message" required></textarea>
-                    <button type="submit" class="button">
-                        Send Message <i class="fa-regular fa-paper-plane"></i>
-                    </button>
-                </form>
+<form class="contact-form" action="https://api.web3forms.com/submit" method="POST">
+    <h2>Contact <span class="highlight">Us</span></h2>
+    <input type="hidden" name="access_key" value="3d4934f9-e83c-457b-a177-36dc0bfb4d3d">
+    <input type="text" name="name" placeholder="Your Name" required>
+    <input type="email" name="email" placeholder="Your Email" required>
+    <textarea name="message" placeholder="Your Message" required></textarea>
+    <input type="hidden" name="redirect" value="https://web3forms.com/success">
+    <button type="submit" class="button">
+        Send Message <i class="fa-regular fa-paper-plane"></i>
+    </button>
+</form>
 
                 <div class="footer-icons">
                     <div class="tas">
